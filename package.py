@@ -12,7 +12,8 @@ ITEMS_TO_INCLUDE = [
     "source",
     "components",
     "images",
-    "data"
+    "data",
+    "story_data.json"
 ]
 
 def create_package():
