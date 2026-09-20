@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pagonix",
+    "name": "Pagonix",
+    "types": "Cristal / Terrestre",
+    "sound": "PAGO! PAGO!",
+    "habitat": "Vales Cristalinos de Aether",
+    "rarity": "Raro / Mítico",
+    "description": "Um pequeno Kurion com aparência que lembra uma tartaruguinha de cristal lapidado. Possui corpo translúcido com reflexos esmeralda e turquesa. É extremamente curioso, leal e protege Koli a todo custo.",
+    "abilities": [
+      "Casco Prismático: Reflete ataques e projeta feixes de luz",
+      "Pulso de Aether: Emite ondas de energia pura ao ouvir o som do Colar",
+      "Escudo Terrestre: Cristaliza o solo para proteger aliados"
+    ],
+    "image": "pkg:/images/kurions/pagonix.png"
+  },
+  {
+    "id": "chalicrfax",
+    "name": "Chalicrfax",
+    "types": "Voador / Arcano",
+    "sound": "CHALIIII-KRAX!",
+    "habitat": "Camadas Superiores da Troposfera de Aether",
+    "rarity": "Lendário",
+    "description": "Criatura alada imponente com envergadura descomunal e asas formadas por plumas etéreas. É o guardião dos exploradores dos céus e o elo entre a terra firme e o Grande Dirigível.",
+    "abilities": [
+      "Voo Transcendente: Corta tempestades de Aether sem desacelerar",
+      "Rajada Solar: Cria correntes de ar radiante para afastar inimigos",
+      "Salto Dimensional: Cria vórtices seguros para transportar companheiros"
+    ],
+    "image": "pkg:/images/kurions/chalicrfax.png"
+  }
+]

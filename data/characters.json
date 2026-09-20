@@ -1,0 +1,47 @@
+[
+  {
+    "id": "koli",
+    "name": "Koli",
+    "role": "Protagonista",
+    "description": "Uma jovem corajosa, leal e cheia de curiosidade sobre o mundo além de sua vila. Ganhou de sua avó o Colar do Começo e estabeleceu um elo inquebrável com o pequeno Kurion Pagonix.",
+    "knownKurions": "Pagonix, Chalicrfax",
+    "episodes": "EP. 1, EP. 2, EP. 3, EP. 4",
+    "image": "pkg:/images/characters/koli.png"
+  },
+  {
+    "id": "pagonix",
+    "name": "Pagonix",
+    "role": "Kurion Parceiro",
+    "description": "Pequeno Kurion cristalino semelhante a uma tartaruguinha. Extremamente amigável, curioso e corajoso ao lado de Koli. Comunica-se pelo som 'PAGO! PAGO!' e emite pulsos de energia quando o Colar brilha.",
+    "knownKurions": "Chalicrfax",
+    "episodes": "EP. 1, EP. 2, EP. 3, EP. 4",
+    "image": "pkg:/images/characters/pagonix.png"
+  },
+  {
+    "id": "chalicrfax",
+    "name": "Chalicrfax",
+    "role": "Guardião Alado de Aether",
+    "description": "Majestoso Kurion voador com penas bioluminescentes. Surge em momentos cruciais de perigo e levou Koli e Pagonix aos céus até o dirigível misterioso.",
+    "knownKurions": "Pagonix",
+    "episodes": "EP. 2, EP. 3",
+    "image": "pkg:/images/characters/chalicrfax.png"
+  },
+  {
+    "id": "dark_team",
+    "name": "Dark Team",
+    "role": "Organização Antagonista",
+    "description": "Facção sombria que deseja reiniciar o mundo de Aether utilizando o poder ancestral das trevas, eliminando todos os Kurions para controlar a energia vital.",
+    "knownKurions": "Kurions Sombrios",
+    "episodes": "EP. 1, EP. 2, EP. 4",
+    "image": "pkg:/images/characters/dark_team.png"
+  },
+  {
+    "id": "grandma",
+    "name": "Avó de Koli",
+    "role": "Guardiã dos Segredos",
+    "description": "Sábia e protetora, confiou a Koli a relíquia ancestral de sua linhagem: o Colar do Começo, sabendo que o destino do mundo logo despertaria.",
+    "knownKurions": "Kurions Ancestrais",
+    "episodes": "EP. 1",
+    "image": "pkg:/images/characters/grandma.png"
+  }
+]

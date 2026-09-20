@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+    <!-- Importação dos scripts auxiliares e da lógica da cena -->
+    <script type="text/brightscript" uri="pkg:/source/Storage.brs" />
+    <script type="text/brightscript" uri="pkg:/source/DataManager.brs" />
+    <script type="text/brightscript" uri="pkg:/source/API.brs" />
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+
+    <children>
+        <!-- Fundo Geral de Aether (1080p) -->
+        <Rectangle
+            id="appBackground"
+            width="1920"
+            height="1080"
+            color="0x080D1AFF" />
+
+        <!-- Header da Aplicação -->
+        <Group id="headerGroup" translation="[60, 40]">
+            <!-- Badge de Classificação Indicativa 10 Anos -->
+            <Rectangle
+                id="ageRatingBox"
+                width="44"
+                height="44"
+                translation="[0, 6]"
+                color="0x2563EBFF" />
+
+            <Label
+                id="ageRatingLabel"
+                text="10"
+                width="44"
+                height="44"
+                translation="[0, 6]"
+                horizAlign="center"
+                vertAlign="center"
+                color="0xFFFFFFFF"
+                font="font:SmallBoldSystemFont" />
+
+            <!-- Logo e Título Oficial -->
+            <Label
+                id="appLogoTitle"
+                text="KURIONS"
+                width="300"
+                height="50"
+                translation="[60, 0]"
+                color="0x38BDF8FF"
+                font="font:HugeBoldSystemFont" />
+
+            <Label
+                id="appLogoSubtitle"
+                text="SAGA ORIGENS"
+                width="300"
+                height="30"
+                translation="[270, 16]"
+                color="0xFBBF24FF"
+                font="font:MediumBoldSystemFont" />
+
+            <Label
+                id="seasonTag"
+                text="TEMPORADA 1  •  AVENTURA &amp; FANTASIA"
+                width="600"
+                height="30"
+                translation="[480, 18]"
+                color="0x94A3B8FF"
+                font="font:SmallSystemFont" />
+        </Group>
+
+        <!-- Divisor sutil superior -->
+        <Rectangle
+            id="headerLine"
+            width="1800"
+            height="2"
+            translation="[60, 105]"
+            color="0x1E293BFF" />
+
+        <!-- ============================================== -->
+        <!-- MENU PRINCIPAL LATERAL ESQUERDO                -->
+        <!-- ============================================== -->
+        <Group id="sidebarGroup" translation="[60, 130]">
+            <Rectangle
+                id="sidebarBg"
+                width="420"
+                height="840"
+                color="0x0F172A99" />
+
+            <!-- Indicador / Cursor de Foco do Menu -->
+            <Rectangle
+                id="menuFocusHighlight"
+                width="412"
+                height="68"
+                translation="[4, 16]"
+                color="0x1E3A8AFF"
+                visible="true" />
+
+            <Rectangle
+                id="menuFocusBar"
+                width="6"
+                height="68"
+                translation="[4, 16]"
+                color="0x38BDF8FF"
+                visible="true" />
+
+            <!-- Itens do Menu -->
+            <Group id="menuItemsGroup" translation="[24, 16]">
+                <Label id="menuItem_0" text="▶  Continuar Assistindo" width="370" height="64" translation="[0, 0]" vertAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_1" text="📺  Episódios" width="370" height="64" translation="[0, 70]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_2" text="⚔  Jogo: As Ruínas" width="370" height="64" translation="[0, 140]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_3" text="📖  História &amp; Lore" width="370" height="64" translation="[0, 210]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_4" text="🧬  Kurions" width="370" height="64" translation="[0, 280]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_5" text="👥  Personagens" width="370" height="64" translation="[0, 350]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+                <Label id="menuItem_6" text="⚙  Configurações" width="370" height="64" translation="[0, 420]" vertAlign="center" color="0x94A3B8FF" font="font:MediumBoldSystemFont" />
+            </Group>
+
+            <!-- Card Informativo do Colar no Rodapé da Sidebar -->
+            <Rectangle
+                id="sideMiniCard"
+                width="380"
+                height="220"
+                translation="[20, 580]"
+                color="0x17255466" />
+
+            <Rectangle
+                id="sideMiniAccent"
+                width="380"
+                height="3"
+                translation="[20, 580]"
+                color="0x38BDF8FF" />
+
+            <Label
+                id="sideMiniTitle"
+                text="💎 O Colar do Começo"
+                width="350"
+                height="35"
+                translation="[35, 595]"
+                color="0x38BDF8FF"
+                font="font:SmallBoldSystemFont" />
+
+            <Label
+                id="sideMiniDesc"
+                text="Um antigo colar aparentemente comum que possui conexão misteriosa com Pagonix e Aether."
+                width="350"
+                height="140"
+                translation="[35, 630]"
+                wrap="true"
+                color="0x94A3B8FF"
+                font="font:SmallSystemFont" />
+        </Group>
+
+        <!-- ============================================== -->
+        <!-- ÁREA CENTRAL DE CONTEÚDO DINÂMICO              -->
+        <!-- ============================================== -->
+        <Group id="contentContainer" translation="[510, 130]">
+
+            <!-- ========================================== -->
+            <!-- 1. TELA: HOME / CONTINUAR ASSISTINDO       -->
+            <!-- ========================================== -->
+            <Group id="viewHome" visible="true">
+                <!-- Banner Cinematográfico de Destaque -->
+                <Poster
+                    id="homeBanner"
+                    uri="pkg:/images/splash_fhd.png"
+                    width="1350"
+                    height="450"
+                    translation="[0, 0]" />
+
+                <Rectangle
+                    id="homeBannerGrad"
+                    width="1350"
+                    height="450"
+                    color="0x080D1AB2" />
+
+                <!-- Informações do Episódio em Destaque -->
+                <Label
+                    id="homeBadge"
+                    text="PRÓXIMO NA SUA JORNADA"
+                    width="600"
+                    height="30"
+                    translation="[40, 40]"
+                    color="0x22C55EFF"
+                    font="font:SmallBoldSystemFont" />
+
+                <Label
+                    id="homeEpTitle"
+                    text="EP. 1 — O Colar do Começo — Parte 1"
+                    width="1200"
+                    height="60"
+                    translation="[40, 80]"
+                    color="0xFFFFFFFF"
+                    font="font:HugeBoldSystemFont" />
+
+                <Label
+                    id="homeEpSynopsis"
+                    text="Koli recebe da avó um colar aparentemente normal. Logo o colar começa a brilhar e os Desbravadores de Tesouro aparecem tentando roubá-lo. Em meio à fuga, Koli encontra um pequeno Kurion chamado Pagonix!"
+                    width="1100"
+                    height="120"
+                    translation="[40, 150]"
+                    wrap="true"
+                    color="0xCBD5E1FF"
+                    font="font:MediumSystemFont" />
+
+                <!-- Barra de Progresso do Episódio -->
+                <Group id="homeProgressGroup" translation="[40, 290]">
+                    <Label
+                        id="homeProgressText"
+                        text="Progresso: 0%"
+                        width="300"
+                        height="30"
+                        color="0x38BDF8FF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Rectangle
+                        id="homeProgressBg"
+                        width="400"
+                        height="10"
+                        translation="[0, 35]"
+                        color="0x334155FF" />
+
+                    <Rectangle
+                        id="homeProgressFill"
+                        width="0"
+                        height="10"
+                        translation="[0, 35]"
+                        color="0x22C55EFF" />
+                </Group>
+
+                <!-- Botão de Ação: Assistir Agora -->
+                <Rectangle
+                    id="btnWatchNow"
+                    width="360"
+                    height="64"
+                    translation="[40, 360]"
+                    color="0x22C55EFF" />
+
+                <Label
+                    id="btnWatchNowLabel"
+                    text="▶  ASSISTIR AGORA"
+                    width="360"
+                    height="64"
+                    translation="[40, 360]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0x052E16FF"
+                    font="font:MediumBoldSystemFont" />
+
+                <!-- Linha com Destaques Rápidos abaixo do Banner -->
+                <Group id="homeHighlights" translation="[0, 480]">
+                    <Label
+                        text="CONHEÇA O UNIVERSO DE KURIONS"
+                        width="800"
+                        height="35"
+                        color="0xFBBF24FF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Poster uri="pkg:/images/lore/colar.png" width="430" height="240" translation="[0, 50]" />
+                    <Poster uri="pkg:/images/lore/dirigivel.png" width="430" height="240" translation="[460, 50]" />
+                    <Poster uri="pkg:/images/kurions/pagonix.png" width="430" height="240" translation="[920, 50]" />
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 2. TELA: CATÁLOGO DE EPISÓDIOS             -->
+            <!-- ========================================== -->
+            <Group id="viewEpisodes" visible="false">
+                <Label
+                    text="EPISÓDIOS DISPONÍVEIS  •  SAGA ORIGENS"
+                    width="800"
+                    height="40"
+                    translation="[0, 0]"
+                    color="0x38BDF8FF"
+                    font="font:LargeBoldSystemFont" />
+
+                <!-- Grade Horizontal de Cards de Episódios -->
+                <Group id="episodesCardsRow" translation="[0, 60]">
+                    <!-- Card 0: Ep 1 -->
+                    <Group id="cardEp_0" translation="[0, 0]">
+                        <Poster id="thumbEp_0" uri="pkg:/images/episodes/ep1.png" width="310" height="180" />
+                        <Rectangle id="focusEp_0" width="318" height="188" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="310" height="40" translation="[0, 140]" color="0x000000CC" />
+                        <Label id="titleEp_0" text="EP. 1 — Parte 1" width="300" height="30" translation="[10, 145]" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                    </Group>
+
+                    <!-- Card 1: Ep 2 -->
+                    <Group id="cardEp_1" translation="[340, 0]">
+                        <Poster id="thumbEp_1" uri="pkg:/images/episodes/ep2.png" width="310" height="180" />
+                        <Rectangle id="focusEp_1" width="318" height="188" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="310" height="40" translation="[0, 140]" color="0x000000CC" />
+                        <Label id="titleEp_1" text="EP. 2 — Parte 2" width="300" height="30" translation="[10, 145]" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                    </Group>
+
+                    <!-- Card 2: Ep 3 (Bloqueado) -->
+                    <Group id="cardEp_2" translation="[680, 0]">
+                        <Poster id="thumbEp_2" uri="pkg:/images/episodes/ep3.png" width="310" height="180" />
+                        <Rectangle id="focusEp_2" width="318" height="188" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="310" height="40" translation="[0, 140]" color="0x000000CC" />
+                        <Label id="titleEp_2" text="🔒 EP. 3 (Em breve)" width="300" height="30" translation="[10, 145]" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                    </Group>
+
+                    <!-- Card 3: Ep 4 (Bloqueado) -->
+                    <Group id="cardEp_3" translation="[1020, 0]">
+                        <Poster id="thumbEp_3" uri="pkg:/images/episodes/ep4.png" width="310" height="180" />
+                        <Rectangle id="focusEp_3" width="318" height="188" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="310" height="40" translation="[0, 140]" color="0x000000CC" />
+                        <Label id="titleEp_3" text="🔒 EP. 4 (Em breve)" width="300" height="30" translation="[10, 145]" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                    </Group>
+                </Group>
+
+                <!-- Painel de Detalhes do Episódio Selecionado -->
+                <Group id="epDetailsPanel" translation="[0, 290]">
+                    <Rectangle
+                        id="epDetailsBg"
+                        width="1350"
+                        height="480"
+                        color="0x0F172ACC" />
+
+                    <Rectangle
+                        id="epDetailsBorder"
+                        width="1350"
+                        height="4"
+                        color="0x38BDF8FF" />
+
+                    <!-- Informações detalhadas -->
+                    <Label
+                        id="detEpNumber"
+                        text="EPISÓDIO 1"
+                        width="600"
+                        height="30"
+                        translation="[40, 30]"
+                        color="0x22C55EFF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="detEpTitle"
+                        text="O Colar do Começo — Parte 1"
+                        width="900"
+                        height="50"
+                        translation="[40, 60]"
+                        color="0xFFFFFFFF"
+                        font="font:HugeBoldSystemFont" />
+
+                    <Label
+                        id="detEpMeta"
+                        text="Duração: 22 min  •  Temporada 1  •  Classificação 10 anos"
+                        width="900"
+                        height="30"
+                        translation="[40, 115]"
+                        color="0xFBBF24FF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="detEpSynopsis"
+                        text="Koli recebe da avó um colar aparentemente normal. Posteriormente o colar começa a brilhar. Os Desbravadores de Tesouro aparecem tentando roubar o colar. Koli encontra um pequeno Kurion chamado Pagonix."
+                        width="900"
+                        height="140"
+                        translation="[40, 155]"
+                        wrap="true"
+                        color="0xE2E8F0FF"
+                        font="font:MediumSystemFont" />
+
+                    <!-- Botão de Ação no Detalhe -->
+                    <Rectangle
+                        id="btnPlayEpisode"
+                        width="320"
+                        height="60"
+                        translation="[40, 320]"
+                        color="0x22C55EFF" />
+
+                    <Label
+                        id="btnPlayEpisodeLabel"
+                        text="▶  REPRODUZIR"
+                        width="320"
+                        height="60"
+                        translation="[40, 320]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0x052E16FF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <!-- Botão de Repetir do Início -->
+                    <Rectangle
+                        id="btnRestartEpisode"
+                        width="320"
+                        height="60"
+                        translation="[380, 320]"
+                        color="0x334155FF" />
+
+                    <Label
+                        id="btnRestartEpisodeLabel"
+                        text="↺  REPETIR DO INÍCIO"
+                        width="320"
+                        height="60"
+                        translation="[380, 320]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <!-- Indicador de Status Assistido -->
+                    <Label
+                        id="detEpStatus"
+                        text="Status: Não assistido"
+                        width="400"
+                        height="30"
+                        translation="[40, 400]"
+                        color="0x94A3B8FF"
+                        font="font:SmallSystemFont" />
+
+                    <!-- Imagem Preview no Detalhe -->
+                    <Poster
+                        id="detEpPoster"
+                        uri="pkg:/images/episodes/ep1.png"
+                        width="360"
+                        height="200"
+                        translation="[950, 60]" />
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 3. TELA: JOGO ZELDA: AS RUÍNAS DE AETHER   -->
+            <!-- ========================================== -->
+            <Group id="viewGame" visible="false">
+                <!-- Header do Jogo e HUD Superior Estilo Zelda -->
+                <Group translation="[0, 0]">
+                    <Label
+                        id="gameRoomTitle"
+                        text="FASE 1/40: BOSQUE DAS ORIGENS"
+                        width="380"
+                        height="40"
+                        translation="[0, 2]"
+                        color="0x38BDF8FF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="gameHpLabel"
+                        text="VIDA: 💎 💎 💎"
+                        width="200"
+                        height="40"
+                        translation="[390, 2]"
+                        color="0x22C55EFF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="gameGemsLabel"
+                        text="GEMAS: 💎 0"
+                        width="180"
+                        height="40"
+                        translation="[600, 2]"
+                        color="0xFBBF24FF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="gameShieldLabel"
+                        text="ESCUDO: [ ↺ PRONTO ]"
+                        width="270"
+                        height="40"
+                        translation="[790, 2]"
+                        color="0x38BDF8FF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        id="gameKeyLabel"
+                        text="CRISTAIS: ✦ 0/3"
+                        width="280"
+                        height="40"
+                        translation="[1070, 2]"
+                        color="0x22C55EFF"
+                        font="font:SmallBoldSystemFont" />
+
+                    <Rectangle
+                        width="1350"
+                        height="2"
+                        translation="[0, 42]"
+                        color="0x1E293BFF" />
+                </Group>
+
+                <!-- Área da Masmorra / Grid 15x8 Tiles -->
+                <Group id="gameMapArea" translation="[0, 50]">
+                    <!-- Moldura da Masmorra -->
+                    <Rectangle
+                        id="gameMapBg"
+                        width="1350"
+                        height="600"
+                        color="0x0B1120FF" />
+
+                    <Rectangle
+                        width="1350"
+                        height="4"
+                        color="0x38BDF8FF" />
+
+                    <!-- Grupo onde os 120 Tiles serão montados dinamicamente -->
+                    <Group id="gameGridGroup" translation="[75, 20]" />
+
+                    <!-- Entidades Dinâmicas: Pagonix (Companion) e Koli (Protagonista) -->
+                    <Poster
+                        id="gamePagonix"
+                        uri="pkg:/images/game/pagonix_player.png"
+                        width="60"
+                        height="60"
+                        translation="[645, 435]" />
+
+                    <Poster
+                        id="gamePlayer"
+                        uri="pkg:/images/game/koli_player.png"
+                        width="76"
+                        height="76"
+                        translation="[637, 362]" />
+
+                    <!-- Feixe de Ataque / Purificação do Colar -->
+                    <Poster
+                        id="gameAttackBeam"
+                        uri="pkg:/images/game/light_beam.png"
+                        width="64"
+                        height="64"
+                        visible="false" />
+
+                    <!-- Efeito de pulso de luz do Colar ao pressionar OK -->
+                    <Poster
+                        id="gameActionGlow"
+                        uri="pkg:/images/game/tile_crystal.png"
+                        width="54"
+                        height="54"
+                        translation="[648, 330]"
+                        visible="false" />
+
+                    <!-- Monstros e Inimigos da Fase -->
+                    <Poster id="gameMonster_0" width="70" height="70" visible="false" />
+                    <Poster id="gameMonster_1" width="70" height="70" visible="false" />
+                    <Poster id="gameMonster_2" width="70" height="70" visible="false" />
+                    <Poster id="gameMonster_3" width="70" height="70" visible="false" />
+
+                    <!-- Drops de Monstros (Gemas de Aether e Corações de Vida) -->
+                    <Poster id="gameDrop_0" width="46" height="46" visible="false" />
+                    <Poster id="gameDrop_1" width="46" height="46" visible="false" />
+                    <Poster id="gameDrop_2" width="46" height="46" visible="false" />
+                    <Poster id="gameDrop_3" width="46" height="46" visible="false" />
+
+                    <!-- Domo Protetor de Cristal do Pagonix -->
+                    <Poster
+                        id="gamePagonixShield"
+                        uri="pkg:/images/game/pagonix_shield.png"
+                        width="92"
+                        height="92"
+                        visible="false" />
+                </Group>
+
+                <!-- Caixa de Diálogos & Narrativa Inferior Estilo Zelda -->
+                <Group id="gameDialogGroup" translation="[0, 660]">
+                    <Rectangle
+                        width="1350"
+                        height="170"
+                        color="0x0F172AF0" />
+
+                    <Rectangle
+                        width="1350"
+                        height="2"
+                        color="0x38BDF8FF" />
+
+                    <Poster
+                        id="gameSpeakerAvatar"
+                        uri="pkg:/images/characters/koli.png"
+                        width="130"
+                        height="140"
+                        translation="[15, 15]" />
+
+                    <Label
+                        id="gameSpeakerName"
+                        text="KOLI &amp; PAGONIX"
+                        width="1160"
+                        height="30"
+                        translation="[165, 16]"
+                        color="0xFBBF24FF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Label
+                        id="gameDialogText"
+                        text="Koli: 'As Ruínas de Aether estão à nossa frente! A Dark Team espalhou barreiras de sombra. Pagonix, vamos usar o Colar do Começo (OK) para restaurar a luz dos altares!'"
+                        width="1160"
+                        height="75"
+                        translation="[165, 52]"
+                        wrap="true"
+                        color="0xF1F5F9FF"
+                        font="font:SmallSystemFont" />
+
+                    <Label
+                        id="gameControlsHint"
+                        text="[▲ ▼ ◀ ▶] Mover   •   [OK] Feixe   •   [↺] Escudo Pagonix   •   [*] Lojinha / Upgrades   •   [BACK] Pausar / Menu"
+                        width="1160"
+                        height="25"
+                        translation="[165, 134]"
+                        color="0x64748BFF"
+                        font="font:SmallSystemFont" />
+                </Group>
+
+                <!-- Modal de Vitória Triunfante / Chalicrfax Convocado -->
+                <Group id="gameVictoryModal" visible="false" translation="[0, 0]">
+                    <Rectangle
+                        width="1350"
+                        height="830"
+                        color="0x000000E6" />
+
+                    <Rectangle
+                        width="900"
+                        height="520"
+                        translation="[225, 140]"
+                        color="0x0B132BFF" />
+
+                    <Rectangle
+                        width="900"
+                        height="6"
+                        translation="[225, 140]"
+                        color="0xFBBF24FF" />
+
+                    <Poster
+                        uri="pkg:/images/kurions/chalicrfax.png"
+                        width="360"
+                        height="220"
+                        translation="[495, 170]" />
+
+                    <Label
+                        text="✨ MISSÃO CUMPRIDA! O GUARDIÃO DESPERTOU! ✨"
+                        width="900"
+                        height="40"
+                        translation="[225, 410]"
+                        horizAlign="center"
+                        color="0xFBBF24FF"
+                        font="font:LargeBoldSystemFont" />
+
+                    <Label
+                        text="Você superou todas as 40 Fases de Aether! A luz do Colar do Começo ativou todos os Altares Ancestrais e Chalicrfax desceu dos céus para expulsar a Dark Team definitivamente do mundo de Aether!"
+                        width="800"
+                        height="80"
+                        translation="[275, 460]"
+                        wrap="true"
+                        horizAlign="center"
+                        color="0xE2E8F0FF"
+                        font="font:MediumSystemFont" />
+
+                    <!-- Botões do Modal de Vitória -->
+                    <Rectangle
+                        id="btnVictoryReplay"
+                        width="320"
+                        height="54"
+                        translation="[340, 560]"
+                        color="0x22C55EFF" />
+
+                    <Label
+                        id="btnVictoryReplayLabel"
+                        text="↺  REJOGAR MISSÃO"
+                        width="320"
+                        height="54"
+                        translation="[340, 560]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Rectangle
+                        id="btnVictoryExit"
+                        width="320"
+                        height="54"
+                        translation="[690, 560]"
+                        color="0x334155FF" />
+
+                    <Label
+                        id="btnVictoryExitLabel"
+                        text="←  VOLTAR AO MENU"
+                        width="320"
+                        height="54"
+                        translation="[690, 560]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+                </Group>
+
+                <!-- Modal de Game Over (Vida Esgotada) -->
+                <Group id="gameOverModal" visible="false" translation="[0, 0]">
+                    <Rectangle
+                        width="1350"
+                        height="830"
+                        color="0x000000E6" />
+
+                    <Rectangle
+                        width="820"
+                        height="440"
+                        translation="[265, 180]"
+                        color="0x1E1B4BFF" />
+
+                    <Rectangle
+                        width="820"
+                        height="6"
+                        translation="[265, 180]"
+                        color="0xEF4444FF" />
+
+                    <Poster
+                        uri="pkg:/images/game/monster_boss.png"
+                        width="90"
+                        height="90"
+                        translation="[630, 205]" />
+
+                    <Label
+                        text="A ESCURIDÃO DA DARK TEAM PREVALECEU..."
+                        width="820"
+                        height="40"
+                        translation="[265, 310]"
+                        horizAlign="center"
+                        color="0xEF4444FF"
+                        font="font:LargeBoldSystemFont" />
+
+                    <Label
+                        text="Pagonix: 'PAGO... Koli, não desista! O Colar do Começo ainda emana faíscas de esperança! Vamos tentar de novo!'"
+                        width="720"
+                        height="70"
+                        translation="[315, 360]"
+                        wrap="true"
+                        horizAlign="center"
+                        color="0xCBD5E1FF"
+                        font="font:MediumSystemFont" />
+
+                    <Rectangle
+                        id="btnGameOverRetry"
+                        width="300"
+                        height="54"
+                        translation="[340, 460]"
+                        color="0x22C55EFF" />
+
+                    <Label
+                        id="btnGameOverRetryLabel"
+                        text="↺  TENTAR DE NOVO"
+                        width="300"
+                        height="54"
+                        translation="[340, 460]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Rectangle
+                        id="btnGameOverExit"
+                        width="300"
+                        height="54"
+                        translation="[710, 460]"
+                        color="0x334155FF" />
+
+                    <Label
+                        id="btnGameOverExitLabel"
+                        text="←  VOLTAR AO MENU"
+                        width="300"
+                        height="54"
+                        translation="[710, 460]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+                </Group>
+
+                <!-- Modal de Fase Concluída -->
+                <Group id="gameStageClearModal" visible="false" translation="[0, 0]">
+                    <Rectangle
+                        width="1350"
+                        height="830"
+                        color="0x000000D9" />
+
+                    <Rectangle
+                        width="860"
+                        height="440"
+                        translation="[245, 180]"
+                        color="0x0F2942FF" />
+
+                    <Rectangle
+                        width="860"
+                        height="6"
+                        translation="[245, 180]"
+                        color="0x38BDF8FF" />
+
+                    <Label
+                        id="stageClearTitle"
+                        text="✨ FASE 1 CONCLUÍDA! ✨"
+                        width="860"
+                        height="40"
+                        translation="[245, 230]"
+                        horizAlign="center"
+                        color="0x38BDF8FF"
+                        font="font:LargeBoldSystemFont" />
+
+                    <Label
+                        id="stageClearDesc"
+                        text="Você desfez as armadilhas sombrias e libertou o caminho para a próxima região de Aether!"
+                        width="760"
+                        height="100"
+                        translation="[295, 290]"
+                        wrap="true"
+                        horizAlign="center"
+                        color="0xF1F5F9FF"
+                        font="font:MediumSystemFont" />
+
+                    <Rectangle
+                        id="btnStageClearNext"
+                        width="380"
+                        height="54"
+                        translation="[485, 450]"
+                        color="0x22C55EFF" />
+
+                    <Label
+                        id="btnStageClearNextLabel"
+                        text="▶  AVANÇAR PARA A PRÓXIMA FASE"
+                        width="380"
+                        height="54"
+                        translation="[485, 450]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+                </Group>
+
+                <!-- Modal da Lojinha do Grande Dirigível (Menu de Upgrades) -->
+                <Group id="gameShopModal" visible="false" translation="[0, 0]">
+                    <Rectangle width="1350" height="830" color="0x000000E6" />
+
+                    <Rectangle
+                        width="920"
+                        height="550"
+                        translation="[215, 120]"
+                        color="0x0B132BFA" />
+
+                    <Rectangle
+                        width="920"
+                        height="6"
+                        translation="[215, 120]"
+                        color="0xFBBF24FF" />
+
+                    <Poster
+                        uri="pkg:/images/game/shop_avatar.png"
+                        width="96"
+                        height="96"
+                        translation="[245, 145]" />
+
+                    <Label
+                        text="LOJINHA DE AETHER DO GRANDE DIRIGÍVEL"
+                        width="700"
+                        height="40"
+                        translation="[360, 145]"
+                        color="0xFBBF24FF"
+                        font="font:LargeBoldSystemFont" />
+
+                    <Label
+                        id="shopGemsBalance"
+                        text="Seu Saldo: 💎 0 Gemas de Aether"
+                        width="700"
+                        height="30"
+                        translation="[360, 195]"
+                        color="0x38BDF8FF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Rectangle width="860" height="2" translation="[245, 255]" color="0x1E293BFF" />
+
+                    <!-- Item 0: +1 Cristal de Vida Máxima -->
+                    <Group id="shopItemGroup_0" translation="[245, 275]">
+                        <Rectangle id="shopItemBox_0" width="860" height="60" color="0x1E293BFF" />
+                        <Poster uri="pkg:/images/game/item_heart.png" width="44" height="44" translation="[15, 8]" />
+                        <Label id="shopItemTitle_0" text="+1 Cristal de Vida Máxima (Permanente)" width="520" height="30" translation="[70, 8]" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                        <Label id="shopItemSub_0" text="Aumenta a barra de vida máxima de Koli para suportar mais golpes." width="520" height="20" translation="[70, 36]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+                        <Label id="shopItemPrice_0" text="💎 30 Gemas" width="230" height="60" translation="[610, 0]" horizAlign="right" vertAlign="center" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Item 1: Alcance do Colar Nível 2 -->
+                    <Group id="shopItemGroup_1" translation="[245, 345]">
+                        <Rectangle id="shopItemBox_1" width="860" height="60" color="0x1E293BFF" />
+                        <Poster uri="pkg:/images/game/light_beam.png" width="44" height="44" translation="[15, 8]" />
+                        <Label id="shopItemTitle_1" text="Alcance do Colar Nível 2 (Feixe Longo)" width="520" height="30" translation="[70, 8]" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                        <Label id="shopItemSub_1" text="O feixe de luz viaja 2 blocos de distância, atingindo inimigos longe." width="520" height="20" translation="[70, 36]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+                        <Label id="shopItemPrice_1" text="💎 40 Gemas" width="230" height="60" translation="[610, 0]" horizAlign="right" vertAlign="center" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Item 2: Poção de Éter (Reviver Instantâneo) -->
+                    <Group id="shopItemGroup_2" translation="[245, 415]">
+                        <Rectangle id="shopItemBox_2" width="860" height="60" color="0x1E293BFF" />
+                        <Poster uri="pkg:/images/lore/colar.png" width="44" height="44" translation="[15, 8]" />
+                        <Label id="shopItemTitle_2" text="Poção de Éter (Reviver Automático)" width="520" height="30" translation="[70, 8]" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                        <Label id="shopItemSub_2" text="Restaura toda a vida no local se Koli for derrotada (Possui: 0)." width="520" height="20" translation="[70, 36]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+                        <Label id="shopItemPrice_2" text="💎 25 Gemas" width="230" height="60" translation="[610, 0]" horizAlign="right" vertAlign="center" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Item 3: Botão Fechar -->
+                    <Group id="shopItemGroup_3" translation="[245, 485]">
+                        <Rectangle id="shopItemBox_3" width="860" height="50" color="0x0F172AFF" />
+                        <Label text="← FECHAR LOJINHA (OU APERTE [*] / BACK)" width="860" height="50" horizAlign="center" vertAlign="center" color="0xCBD5E1FF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <Label
+                        id="shopFeedbackMsg"
+                        text="Use [▲ ▼] Navegar   •   [OK] Comprar Melhoria   •   [*] ou [BACK] Sair"
+                        width="920"
+                        height="35"
+                        translation="[215, 595]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0x94A3B8FF"
+                        font="font:SmallSystemFont" />
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 4. TELA: HISTÓRIA & LORE                   -->
+            <!-- ========================================== -->
+            <Group id="viewLore" visible="false">
+                <Label
+                    text="HISTÓRIA &amp; MISTÉRIOS DE AETHER"
+                    width="900"
+                    height="40"
+                    translation="[0, 0]"
+                    color="0x38BDF8FF"
+                    font="font:LargeBoldSystemFont" />
+
+                <!-- Tabs Superiores de História -->
+                <Group id="loreTabs" translation="[0, 50]">
+                    <Group id="tabLore_0" translation="[0, 0]">
+                        <Rectangle id="tabBg_0" width="360" height="50" color="0x1E3A8AFF" />
+                        <Rectangle id="tabBorder_0" width="360" height="3" translation="[0, 47]" color="0x38BDF8FF" />
+                        <Label text="💎  O COLAR DO COMEÇO" width="360" height="50" horizAlign="center" vertAlign="center" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                    </Group>
+                    <Group id="tabLore_1" translation="[380, 0]">
+                        <Rectangle id="tabBg_1" width="360" height="50" color="0x0F172ACC" />
+                        <Rectangle id="tabBorder_1" width="360" height="3" translation="[0, 47]" color="0x334155FF" />
+                        <Label text="🛸  O GRANDE DIRIGÍVEL" width="360" height="50" horizAlign="center" vertAlign="center" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                    </Group>
+                </Group>
+
+                <!-- Conteúdo 1: O Colar do Começo -->
+                <Group id="loreSectionColar" translation="[0, 120]" visible="true">
+                    <Rectangle width="1350" height="660" color="0x0F172ACC" />
+                    <Rectangle width="1350" height="4" color="0x38BDF8FF" />
+
+                    <!-- Aura Animada atrás da arte do Colar -->
+                    <Rectangle
+                        id="colarAura"
+                        width="500"
+                        height="340"
+                        translation="[30, 30]"
+                        color="0x38BDF833" />
+
+                    <Poster uri="pkg:/images/lore/colar.png" width="480" height="320" translation="[40, 40]" />
+
+                    <Label text="💎  A RELÍQUIA LUMINOSA DE KOLI" width="750" height="40" translation="[560, 40]" color="0x38BDF8FF" font="font:LargeBoldSystemFont" />
+                    <Label text="Origem Ancestral de Aether  •  Ressonância de Cristal" width="750" height="30" translation="[560, 85]" color="0xFBBF24FF" font="font:SmallBoldSystemFont" />
+
+                    <Label
+                        text="Um antigo colar aparentemente comum que a avó de Koli lhe entregou antes do ataque da Dark Team. Quando Pagonix e Koli enfrentam situações de perigo, o pingente pulsa com uma luz cristalina pura que neutraliza sombras e desperta memórias adormecidas."
+                        width="740"
+                        height="140"
+                        translation="[560, 125]"
+                        wrap="true"
+                        color="0xE2E8F0FF"
+                        font="font:MediumSystemFont" />
+
+                    <!-- Botão de Ação / Interatividade do Colar -->
+                    <Rectangle
+                        id="btnColarPower"
+                        width="380"
+                        height="58"
+                        translation="[560, 280]"
+                        color="0x22C55EFF" />
+
+                    <Label
+                        id="btnColarPowerLabel"
+                        text="⚡  CANALIZAR PODER DO COLAR"
+                        width="380"
+                        height="58"
+                        translation="[560, 280]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0x052E16FF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <!-- Card de Revelação do Colar -->
+                    <Group id="colarRevelationBox" translation="[40, 390]">
+                        <Rectangle width="1270" height="230" color="0x17255466" />
+                        <Rectangle width="1270" height="3" color="0x38BDF8FF" />
+                        <Label text="MISTÉRIO DOS CRISTAIS DE AETHER" width="1200" height="35" translation="[30, 20]" color="0x38BDF8FF" font="font:SmallBoldSystemFont" />
+                        <Label
+                            id="colarRevelationText"
+                            text="Dizem as lendas ancestrais que existem quatro fragmentos ressonantes espalhados por Aether. O pingente de Koli é a Chave Primordial capaz de sincronizar com o leme do Grande Dirigível."
+                            width="1200"
+                            height="140"
+                            translation="[30, 60]"
+                            wrap="true"
+                            color="0xCBD5E1FF"
+                            font="font:MediumSystemFont" />
+                    </Group>
+                </Group>
+
+                <!-- Conteúdo 2: O Grande Dirigível e Seus Compartimentos -->
+                <Group id="loreSectionDirigivel" translation="[0, 120]" visible="false">
+                    <Rectangle width="1350" height="660" color="0x0F172ACC" />
+                    <Rectangle width="1350" height="4" color="0x22C55EFF" />
+
+                    <Poster uri="pkg:/images/lore/dirigivel.png" width="460" height="280" translation="[40, 40]" />
+
+                    <!-- Lista Horizontal de Compartimentos -->
+                    <Group id="roomsRow" translation="[530, 40]">
+                        <Label text="COMPARTIMENTOS EXPLORÁVEIS:" width="750" height="30" color="0xFBBF24FF" font="font:SmallBoldSystemFont" />
+
+                        <!-- 5 Botões de Salas -->
+                        <Group id="roomBtn_0" translation="[0, 40]">
+                            <Rectangle id="roomBox_0" width="140" height="48" color="0x1E3A8AFF" />
+                            <Label text="Comando" width="140" height="48" horizAlign="center" vertAlign="center" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                        </Group>
+                        <Group id="roomBtn_1" translation="[150, 40]">
+                            <Rectangle id="roomBox_1" width="140" height="48" color="0x1E293BFF" />
+                            <Label text="Laboratório" width="140" height="48" horizAlign="center" vertAlign="center" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                        </Group>
+                        <Group id="roomBtn_2" translation="[300, 40]">
+                            <Rectangle id="roomBox_2" width="140" height="48" color="0x1E293BFF" />
+                            <Label text="Biblioteca" width="140" height="48" horizAlign="center" vertAlign="center" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                        </Group>
+                        <Group id="roomBtn_3" translation="[450, 40]">
+                            <Rectangle id="roomBox_3" width="140" height="48" color="0x1E293BFF" />
+                            <Label text="Mapas" width="140" height="48" horizAlign="center" vertAlign="center" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                        </Group>
+                        <Group id="roomBtn_4" translation="[600, 40]">
+                            <Rectangle id="roomBox_4" width="140" height="48" color="0x1E293BFF" />
+                            <Label text="Hangar" width="140" height="48" horizAlign="center" vertAlign="center" color="0x94A3B8FF" font="font:SmallBoldSystemFont" />
+                        </Group>
+                    </Group>
+
+                    <!-- Detalhes do Compartimento Ativo -->
+                    <Group id="activeRoomDetails" translation="[530, 160]">
+                        <Label id="activeRoomName" text="Sala de Comando" width="750" height="40" color="0x22C55EFF" font="font:LargeBoldSystemFont" />
+                        <Label
+                            id="activeRoomDesc"
+                            text="Ponte principal com visores panorâmicos para monitorar tempestades e correntes de ar de Aether. O leme é controlado por cristais de ressonância."
+                            width="750"
+                            height="90"
+                            translation="[0, 45]"
+                            wrap="true"
+                            color="0xE2E8F0FF"
+                            font="font:MediumSystemFont" />
+
+                        <Label text="SEGREDO A BORDO:" width="750" height="30" translation="[0, 140]" color="0xFBBF24FF" font="font:SmallBoldSystemFont" />
+                        <Label
+                            id="activeRoomSecret"
+                            text="Um mapa estelar oculto acende apenas quando o Colar do Começo está a bordo."
+                            width="750"
+                            height="60"
+                            translation="[0, 170]"
+                            wrap="true"
+                            color="0x38BDF8FF"
+                            font="font:MediumSystemFont" />
+                    </Group>
+
+                    <!-- Rodapé do Dirigível -->
+                    <Group id="dirigivelFooter" translation="[40, 360]">
+                        <Rectangle width="1270" height="260" color="0x064E3B44" />
+                        <Rectangle width="1270" height="3" color="0x22C55EFF" />
+                        <Label text="BASE CENTRAL DOS EXPLORADORES" width="1200" height="35" translation="[30, 20]" color="0x22C55EFF" font="font:SmallBoldSystemFont" />
+                        <Label
+                            text="O Dirigível é o refúgio dos exploradores e funciona como fortaleza aérea blindada contra ataques da Dark Team. Durante a temporada, Koli e Pagonix descobrirão que os tripulantes já esperavam pela chegada da portadora do Colar do Começo há mais de três gerações."
+                            width="1200"
+                            height="160"
+                            translation="[30, 60]"
+                            wrap="true"
+                            color="0xCBD5E1FF"
+                            font="font:MediumSystemFont" />
+                    </Group>
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 4. TELA: ENCICLOPÉDIA DE KURIONS           -->
+            <!-- ========================================== -->
+            <Group id="viewKurions" visible="false">
+                <Label
+                    text="ENCICLOPÉDIA DE KURIONS  •  CRIATURAS DE AETHER"
+                    width="900"
+                    height="40"
+                    translation="[0, 0]"
+                    color="0x38BDF8FF"
+                    font="font:LargeBoldSystemFont" />
+
+                <!-- Seletor de Kurions -->
+                <Group id="kurionsSelectorRow" translation="[0, 60]">
+                    <!-- Kurion 0: Pagonix -->
+                    <Group id="kItem_0" translation="[0, 0]">
+                        <Poster uri="pkg:/images/kurions/pagonix.png" width="300" height="170" />
+                        <Rectangle id="focusK_0" width="308" height="178" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="300" height="40" translation="[0, 130]" color="0x000000DD" />
+                        <Label text="Pagonix (Cristal)" width="280" height="30" translation="[10, 135]" color="0x22C55EFF" font="font:SmallBoldSystemFont" />
+                    </Group>
+
+                    <!-- Kurion 1: Chalicrfax -->
+                    <Group id="kItem_1" translation="[330, 0]">
+                        <Poster uri="pkg:/images/kurions/chalicrfax.png" width="300" height="170" />
+                        <Rectangle id="focusK_1" width="308" height="178" translation="[-4, -4]" color="0x00000000" />
+                        <Rectangle width="300" height="40" translation="[0, 130]" color="0x000000DD" />
+                        <Label text="Chalicrfax (Voador)" width="280" height="30" translation="[10, 135]" color="0x38BDF8FF" font="font:SmallBoldSystemFont" />
+                    </Group>
+                </Group>
+
+                <!-- Detalhes do Kurion Selecionado -->
+                <Group id="kurionDetails" translation="[0, 270]">
+                    <Rectangle width="1350" height="500" color="0x0F172ACC" />
+                    <Rectangle width="1350" height="4" color="0x22C55EFF" />
+
+                    <Poster id="detKPoster" uri="pkg:/images/kurions/pagonix.png" width="460" height="340" translation="[40, 40]" />
+
+                    <Label id="detKName" text="Pagonix" width="700" height="50" translation="[530, 40]" color="0x22C55EFF" font="font:HugeBoldSystemFont" />
+                    <Label id="detKTypes" text="Tipos: Cristal / Terrestre   •   Som: 'PAGO! PAGO!'" width="700" height="35" translation="[530, 95]" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+
+                    <Label
+                        id="detKDesc"
+                        text="Pequeno Kurion semelhante a uma tartaruguinha de cristal lapidado. Possui carapaça translúcida que reflete luz pura. É curioso, extremamente protetor com a protagonista Koli e canaliza energia de Aether quando o Colar do Começo se manifesta."
+                        width="760"
+                        height="140"
+                        translation="[530, 140]"
+                        wrap="true"
+                        color="0xE2E8F0FF"
+                        font="font:MediumSystemFont" />
+
+                    <Label text="HABILIDADES ESPECIAIS:" width="700" height="30" translation="[530, 290]" color="0x38BDF8FF" font="font:SmallBoldSystemFont" />
+                    <Label
+                        id="detKAbilities"
+                        text="• Casco Prismático: Projeta reflexos protetores&#xA;• Pulso de Aether: Dispara ondas de energia ao ressonar com o Colar&#xA;• Escudo Terrestre: Cristaliza o terreno para segurança da equipe"
+                        width="760"
+                        height="120"
+                        translation="[530, 325]"
+                        color="0x94A3B8FF"
+                        font="font:SmallSystemFont" />
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 5. TELA: PERSONAGENS                       -->
+            <!-- ========================================== -->
+            <Group id="viewCharacters" visible="false">
+                <Label
+                    text="PERSONAGENS  •  SAGA ORIGENS"
+                    width="900"
+                    height="40"
+                    translation="[0, 0]"
+                    color="0x38BDF8FF"
+                    font="font:LargeBoldSystemFont" />
+
+                <!-- Lista Horizontal de Personagens -->
+                <Group id="charactersRow" translation="[0, 60]">
+                    <!-- Koli -->
+                    <Group id="charCard_0" translation="[0, 0]">
+                        <Poster uri="pkg:/images/characters/koli.png" width="230" height="280" />
+                        <Rectangle id="focusChar_0" width="238" height="288" translation="[-4, -4]" color="0x00000000" />
+                        <Label text="Koli" width="230" height="35" translation="[0, 240]" horizAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Pagonix -->
+                    <Group id="charCard_1" translation="[255, 0]">
+                        <Poster uri="pkg:/images/characters/pagonix.png" width="230" height="280" />
+                        <Rectangle id="focusChar_1" width="238" height="288" translation="[-4, -4]" color="0x00000000" />
+                        <Label text="Pagonix" width="230" height="35" translation="[0, 240]" horizAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Chalicrfax -->
+                    <Group id="charCard_2" translation="[510, 0]">
+                        <Poster uri="pkg:/images/characters/chalicrfax.png" width="230" height="280" />
+                        <Rectangle id="focusChar_2" width="238" height="288" translation="[-4, -4]" color="0x00000000" />
+                        <Label text="Chalicrfax" width="230" height="35" translation="[0, 240]" horizAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Dark Team -->
+                    <Group id="charCard_3" translation="[765, 0]">
+                        <Poster uri="pkg:/images/characters/dark_team.png" width="230" height="280" />
+                        <Rectangle id="focusChar_3" width="238" height="288" translation="[-4, -4]" color="0x00000000" />
+                        <Label text="Dark Team" width="230" height="35" translation="[0, 240]" horizAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                    </Group>
+
+                    <!-- Avó de Koli -->
+                    <Group id="charCard_4" translation="[1020, 0]">
+                        <Poster uri="pkg:/images/characters/grandma.png" width="230" height="280" />
+                        <Rectangle id="focusChar_4" width="238" height="288" translation="[-4, -4]" color="0x00000000" />
+                        <Label text="Avó de Koli" width="230" height="35" translation="[0, 240]" horizAlign="center" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                    </Group>
+                </Group>
+
+                <!-- Detalhes do Personagem Selecionado -->
+                <Group id="characterDetails" translation="[0, 380]">
+                    <Rectangle width="1350" height="390" color="0x0F172ACC" />
+                    <Rectangle width="1350" height="4" color="0x38BDF8FF" />
+
+                    <Label id="detCharName" text="Koli" width="700" height="50" translation="[40, 30]" color="0x38BDF8FF" font="font:HugeBoldSystemFont" />
+                    <Label id="detCharRole" text="Protagonista da Saga Origens" width="700" height="30" translation="[40, 85]" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+
+                    <Label
+                        id="detCharDesc"
+                        text="Jovem determinada e leal. Ganhou de sua avó o Colar do Começo e parte em uma jornada de descobertas pelos céus de Aether ao lado de seu inseparável parceiro Pagonix."
+                        width="800"
+                        height="120"
+                        translation="[40, 125]"
+                        wrap="true"
+                        color="0xE2E8F0FF"
+                        font="font:MediumSystemFont" />
+
+                    <Label id="detCharKurions" text="Kurions Conhecidos: Pagonix, Chalicrfax" width="800" height="30" translation="[40, 260]" color="0x22C55EFF" font="font:SmallBoldSystemFont" />
+                    <Label id="detCharEps" text="Aparece em: EP. 1, EP. 2, EP. 3, EP. 4" width="800" height="30" translation="[40, 300]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+
+                    <Poster id="detCharPoster" uri="pkg:/images/characters/koli.png" width="300" height="330" translation="[980, 30]" />
+                </Group>
+            </Group>
+
+            <!-- ========================================== -->
+            <!-- 6. TELA: CONFIGURAÇÕES                     -->
+            <!-- ========================================== -->
+            <Group id="viewSettings" visible="false">
+                <Label
+                    text="CONFIGURAÇÕES &amp; INFORMAÇÕES"
+                    width="800"
+                    height="40"
+                    translation="[0, 0]"
+                    color="0x38BDF8FF"
+                    font="font:LargeBoldSystemFont" />
+
+                <Group translation="[0, 60]">
+                    <Rectangle width="1350" height="600" color="0x0F172ACC" />
+                    <Rectangle width="1350" height="4" color="0x38BDF8FF" />
+
+                    <Label text="SÉRIE ANIMADA: KURIONS — SAGA ORIGENS" width="900" height="40" translation="[40, 40]" color="0xFFFFFFFF" font="font:LargeBoldSystemFont" />
+                    <Label text="Classificação Indicativa: Recomendado para 10 anos" width="900" height="30" translation="[40, 90]" color="0xFBBF24FF" font="font:MediumBoldSystemFont" />
+                    <Label text="Plataforma: Roku OS (Full HD / 4K SceneGraph)" width="900" height="30" translation="[40, 125]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+                    <Label text="Desenvolvimento oficial com BrightScript e armazenamento local seguro." width="900" height="30" translation="[40, 155]" color="0x94A3B8FF" font="font:SmallSystemFont" />
+
+                    <!-- Informações Reais do Dispositivo da Roku TV -->
+                    <Rectangle width="1270" height="2" translation="[40, 200]" color="0x334155FF" />
+                    <Label text="INFORMAÇÕES DO DISPOSITIVO &amp; REDE" width="900" height="35" translation="[40, 215]" color="0x38BDF8FF" font="font:MediumBoldSystemFont" />
+
+                    <Label id="devInfoModel" text="Modelo da TV: Detectando..." width="600" height="30" translation="[40, 255]" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                    <Label id="devInfoVersion" text="Sistema: Roku OS" width="600" height="30" translation="[40, 290]" color="0xCBD5E1FF" font="font:SmallSystemFont" />
+                    <Label id="devInfoDisplay" text="Resolução: 1920x1080 Full HD" width="600" height="30" translation="[650, 255]" color="0xFFFFFFFF" font="font:SmallBoldSystemFont" />
+                    <Label id="devInfoNet" text="Conexão: Conectado" width="600" height="30" translation="[650, 290]" color="0x22C55EFF" font="font:SmallSystemFont" />
+
+                    <Rectangle width="1270" height="2" translation="[40, 335]" color="0x334155FF" />
+
+                    <Label text="GERENCIAMENTO DE DADOS LOCAIS" width="900" height="35" translation="[40, 350]" color="0x38BDF8FF" font="font:MediumBoldSystemFont" />
+                    <Label text="Apagar histórico e progresso salvo de episódios para reiniciar a experiência:" width="900" height="30" translation="[40, 385]" color="0xCBD5E1FF" font="font:SmallSystemFont" />
+
+                    <!-- Botão Limpar Dados -->
+                    <Rectangle
+                        id="btnClearData"
+                        width="360"
+                        height="54"
+                        translation="[40, 425]"
+                        color="0xEF4444FF" />
+
+                    <Label
+                        id="btnClearDataLabel"
+                        text="🗑  LIMPAR PROGRESSO"
+                        width="360"
+                        height="54"
+                        translation="[40, 425]"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="0xFFFFFFFF"
+                        font="font:MediumBoldSystemFont" />
+
+                    <Label
+                        id="settingsMsg"
+                        text=""
+                        width="600"
+                        height="40"
+                        translation="[420, 435]"
+                        color="0x22C55EFF"
+                        font="font:MediumBoldSystemFont" />
+                </Group>
+            </Group>
+
+        </Group>
+
+        <!-- ============================================== -->
+        <!-- REPRODUTOR DE VÍDEO NATIVO (SceneGraph Video)  -->
+        <!-- ============================================== -->
+        <Group id="videoContainer" visible="false">
+            <!-- Player nativo de vídeo 1080p -->
+            <Video
+                id="videoPlayer"
+                width="1920"
+                height="1080"
+                translation="[0, 0]"
+                visible="false" />
+
+            <!-- HUD / Barra de Controles sobre o vídeo -->
+            <Group id="videoOverlay" visible="false">
+                <!-- Sombra / Gradiente superior e inferior -->
+                <Rectangle width="1920" height="120" translation="[0, 0]" color="0x000000B3" />
+                <Rectangle width="1920" height="160" translation="[0, 920]" color="0x000000CC" />
+
+                <!-- Título do Episódio em reprodução -->
+                <Label
+                    id="videoTitleLabel"
+                    text="EP. 1 — O Colar do Começo"
+                    width="1200"
+                    height="50"
+                    translation="[80, 35]"
+                    color="0xFFFFFFFF"
+                    font="font:LargeBoldSystemFont" />
+
+                <Label
+                    id="videoSubtitleLabel"
+                    text="Kurions: Saga Origens  •  Temporada 1"
+                    width="800"
+                    height="30"
+                    translation="[80, 75]"
+                    color="0x38BDF8FF"
+                    font="font:SmallBoldSystemFont" />
+
+                <!-- Barra de Tempo e Progresso -->
+                <Label
+                    id="videoTimeCurrent"
+                    text="00:00"
+                    width="120"
+                    height="40"
+                    translation="[80, 940]"
+                    color="0xFFFFFFFF"
+                    font="font:MediumBoldSystemFont" />
+
+                <Rectangle
+                    id="videoTrackBg"
+                    width="1560"
+                    height="12"
+                    translation="[180, 955]"
+                    color="0x334155FF" />
+
+                <Rectangle
+                    id="videoTrackFill"
+                    width="0"
+                    height="12"
+                    translation="[180, 955]"
+                    color="0x22C55EFF" />
+
+                <Label
+                    id="videoTimeTotal"
+                    text="22:00"
+                    width="120"
+                    height="40"
+                    translation="[1760, 940]"
+                    color="0xFFFFFFFF"
+                    font="font:MediumBoldSystemFont" />
+
+                <Label
+                    text="Controle: [OK/Play] Pausar / Continuar   |   [◀ 10s] Retroceder   |   [▶ 10s] Avançar   |   [BACK] Sair e Salvar"
+                    width="1920"
+                    height="35"
+                    translation="[0, 1000]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0x94A3B8FF"
+                    font="font:SmallSystemFont" />
+            </Group>
+
+            <!-- Card de Fim do Episódio -->
+            <Group id="endOfVideoModal" visible="false">
+                <Rectangle width="1920" height="1080" color="0x000000E6" />
+
+                <Rectangle
+                    width="900"
+                    height="460"
+                    translation="[510, 310]"
+                    color="0x0F172ACC" />
+
+                <Rectangle
+                    width="900"
+                    height="4"
+                    translation="[510, 310]"
+                    color="0x22C55EFF" />
+
+                <Label
+                    text="EPISÓDIO CONCLUÍDO!"
+                    width="900"
+                    height="60"
+                    translation="[510, 360]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0x22C55EFF"
+                    font="font:HugeBoldSystemFont" />
+
+                <Label
+                    id="endModalEpName"
+                    text="O Colar do Começo — Parte 1"
+                    width="900"
+                    height="40"
+                    translation="[510, 430]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0xFFFFFFFF"
+                    font="font:LargeBoldSystemFont" />
+
+                <!-- Botão Próximo Episódio -->
+                <Rectangle
+                    id="btnNextEp"
+                    width="340"
+                    height="64"
+                    translation="[570, 560]"
+                    color="0x22C55EFF" />
+
+                <Label
+                    id="btnNextEpLabel"
+                    text="▶  PRÓXIMO EPISÓDIO"
+                    width="340"
+                    height="64"
+                    translation="[570, 560]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0x052E16FF"
+                    font="font:MediumBoldSystemFont" />
+
+                <!-- Botão Repetir Episódio -->
+                <Rectangle
+                    id="btnReplayEp"
+                    width="340"
+                    height="64"
+                    translation="[1010, 560]"
+                    color="0x334155FF" />
+
+                <Label
+                    id="btnReplayEpLabel"
+                    text="↺  REPETIR EPISÓDIO"
+                    width="340"
+                    height="64"
+                    translation="[1010, 560]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0xFFFFFFFF"
+                    font="font:MediumBoldSystemFont" />
+
+                <Label
+                    text="Pressione [BACK] no controle remoto para voltar ao Menu Principal"
+                    width="900"
+                    height="40"
+                    translation="[510, 680]"
+                    horizAlign="center"
+                    vertAlign="center"
+                    color="0x94A3B8FF"
+                    font="font:SmallSystemFont" />
+            </Group>
+
+            <!-- Banner de Buffering de Transmissão -->
+            <Group id="videoBufferingBox" translation="[710, 480]" visible="false">
+                <Rectangle width="500" height="80" color="0x0F172AF0" />
+                <Rectangle width="500" height="4" color="0x38BDF8FF" />
+                <Label text="Sincronizando sinal de Aether..." width="500" height="80" horizAlign="center" vertAlign="center" color="0x38BDF8FF" font="font:MediumBoldSystemFont" />
+            </Group>
+
+            <!-- Modal de Opções Rápidas do Vídeo (acionado com [*]) -->
+            <Group id="videoOptionsModal" translation="[560, 300]" visible="false">
+                <Rectangle width="800" height="440" color="0x0F172AF5" />
+                <Rectangle width="800" height="4" color="0x22C55EFF" />
+                <Label text="INFORMAÇÕES DA TRANSMISSÃO" width="800" height="50" translation="[0, 25]" horizAlign="center" color="0x22C55EFF" font="font:LargeBoldSystemFont" />
+                <Label id="optEpTitle" text="Episódio" width="720" height="40" translation="[40, 90]" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+                <Label id="optEpDesc" text="" width="720" height="120" translation="[40, 135]" wrap="true" color="0xCBD5E1FF" font="font:SmallSystemFont" />
+                <Label id="optAudioTrack" text="Áudio: Português Original (Estéreo / 5.1)" width="720" height="30" translation="[40, 275]" color="0xFBBF24FF" font="font:SmallBoldSystemFont" />
+                <Label id="optQuality" text="Qualidade: Full HD 1080p (Transmissão Cristalina de Aether)" width="720" height="30" translation="[40, 315]" color="0x38BDF8FF" font="font:SmallBoldSystemFont" />
+                <Label text="Pressione [*] ou [OK] para fechar este painel" width="800" height="35" translation="[0, 380]" horizAlign="center" color="0x94A3B8FF" font="font:SmallSystemFont" />
+            </Group>
+        </Group>
+
+        <!-- Timer para ocultar o overlay do vídeo após 4 segundos -->
+        <Timer
+            id="videoOverlayTimer"
+            repeat="false"
+            duration="4" />
+
+        <!-- Timer para salvar progresso do vídeo periodicamente a cada 3 segundos -->
+        <Timer
+            id="videoProgressTimer"
+            repeat="true"
+            duration="3" />
+
+        <!-- Animação Contínua de Pulso Luminoso do Colar do Começo -->
+        <Animation
+            id="colarPulseAnim"
+            duration="1.6"
+            repeat="true"
+            easeFunction="linear">
+            <ColorFieldInterpolator
+                key="[0.0, 0.5, 1.0]"
+                keyValue="[0x38BDF833, 0x22C55E88, 0x38BDF833]"
+                fieldToInterp="colarAura.color" />
+        </Animation>
+
+        <!-- ============================================== -->
+        <!-- INTRO CINEMATOGRÁFICA DE ABERTURA              -->
+        <!-- ============================================== -->
+        <Group id="introScreen" visible="true">
+            <Rectangle width="1920" height="1080" color="0x080D1AFF" />
+            <Poster uri="pkg:/images/splash_fhd.png" width="1920" height="1080" />
+            <Rectangle width="1920" height="1080" color="0x080D1AB2" />
+
+            <Label
+                id="introTitle"
+                text="KURIONS"
+                width="1920"
+                height="100"
+                translation="[0, 420]"
+                horizAlign="center"
+                vertAlign="center"
+                color="0x38BDF8FF"
+                font="font:HugeBoldSystemFont" />
+
+            <Label
+                id="introSubtitle"
+                text="SAGA ORIGENS"
+                width="1920"
+                height="50"
+                translation="[0, 520]"
+                horizAlign="center"
+                vertAlign="center"
+                color="0xFBBF24FF"
+                font="font:LargeBoldSystemFont" />
+
+            <Label
+                id="introTagline"
+                text="Uma Aventura Cristalina em Aether"
+                width="1920"
+                height="40"
+                translation="[0, 580]"
+                horizAlign="center"
+                vertAlign="center"
+                color="0xCBD5E1FF"
+                font="font:MediumSystemFont" />
+        </Group>
+
+        <Timer
+            id="introTimer"
+            duration="1.8"
+            repeat="false" />
+
+        <Timer
+            id="gameGlowTimer"
+            duration="0.3"
+            repeat="false" />
+
+        <Timer
+            id="gameEnemyTimer"
+            duration="0.75"
+            repeat="true" />
+
+        <Timer
+            id="gameAttackTimer"
+            duration="0.25"
+            repeat="false" />
+
+        <Timer
+            id="gameInvulnerableTimer"
+            duration="1.2"
+            repeat="false" />
+
+        <Timer
+            id="gameShieldTimer"
+            duration="2.5"
+            repeat="false" />
+
+        <Timer
+            id="gameShieldCooldownTimer"
+            duration="6.0"
+            repeat="false" />
+
+        <Animation
+            id="introFadeOutAnim"
+            duration="0.6"
+            repeat="false"
+            easeFunction="linear">
+            <FloatFieldInterpolator
+                key="[0.0, 1.0]"
+                keyValue="[1.0, 0.0]"
+                fieldToInterp="introScreen.opacity" />
+        </Animation>
+    </children>
+</component>

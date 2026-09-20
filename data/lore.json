@@ -1,0 +1,53 @@
+[
+  {
+    "id": "colar",
+    "title": "O Colar do Começo",
+    "tag": "ARTEFATO ANCESTRAL",
+    "subtitle": "A relíquia luminosa da avó de Koli",
+    "description": "Um antigo colar aparentemente comum que possui uma conexão misteriosa com os Kurions e com acontecimentos relacionados à origem de Aether. Quando Koli e Pagonix estão em perigo, o pingente pulsa com energia prismática e desperta forças adormecidas.",
+    "mystery": "Dizem as lendas que existem fragmentos ressonantes espalhados pelos quatro cantos do continente capazes de abrir os Portais de Aether.",
+    "revelation": "O Colar emite um feixe de luz que aponta para o zênite dos céus de Aether, indicando a rota secreta do Grande Dirigível!",
+    "image": "pkg:/images/lore/colar.png"
+  },
+  {
+    "id": "dirigivel",
+    "title": "O Grande Dirigível",
+    "tag": "BASE MÓVEL DOS CÉUS",
+    "subtitle": "O refúgio dos exploradores de Aether",
+    "description": "Uma colossal fortaleza aérea construída com ligas de cristal e hélices de energia pura. Funciona como quartel-general móvel onde os tripulantes estudam os Kurions e investigam as anomalias da Dark Team.",
+    "mystery": "Os tripulantes pareciam aguardar a chegada do Colar do Começo há mais de três gerações...",
+    "image": "pkg:/images/lore/dirigivel.png",
+    "rooms": [
+      {
+        "id": "comando",
+        "name": "Sala de Comando",
+        "desc": "Ponte principal com visores panorâmicos para monitorar tempestades e correntes de ar de Aether. O leme é controlado por cristais de ressonância.",
+        "secret": "Um mapa estelar oculto acende apenas quando o Colar do Começo está a bordo."
+      },
+      {
+        "id": "lab",
+        "name": "Laboratório Kurion",
+        "desc": "Espaço acolhedor com tanques de cristal bioenergético onde Kurions feridos podem descansar e recuperar suas energias primordiais.",
+        "secret": "Pagonix adora as pedras de quartzo que servem de banquete neste laboratório."
+      },
+      {
+        "id": "biblioteca",
+        "name": "Biblioteca Ancestral",
+        "desc": "Repleta de pergaminhos milenares e registros das primeiras expedições aos continentes flutuantes de Aether.",
+        "secret": "Contém ilustrações pré-históricas de Chalicrfax guardando o Colar do Começo."
+      },
+      {
+        "id": "mapas",
+        "name": "Sala de Mapas",
+        "desc": "Mesa holográfica tridimensional que rastreia a movimentação e os pontos de influência da temível Dark Team.",
+        "secret": "Sinais de trevas foram detectados próximos à vila natal de Koli."
+      },
+      {
+        "id": "hangar",
+        "name": "Hangar Alado",
+        "desc": "Plataforma de lançamento para planadores e local de pouso para Kurions voadores como Chalicrfax.",
+        "secret": "Ventos termais ascendentes permitem decolagens imediatas em situações de emergência."
+      }
+    ]
+  }
+]

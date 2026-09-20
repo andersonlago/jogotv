@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ep_1",
+    "number": 1,
+    "season": 1,
+    "title": "O Colar do Começo — Parte 1",
+    "subtitle": "Koli e o despertar do cristal",
+    "synopsis": "Koli recebe de sua avó um colar aparentemente normal. Mais tarde, o colar começa a emitir uma luz misteriosa. Os Desbravadores de Tesouro surgem tentando roubá-lo, levando Koli a encontrar um pequeno e curioso Kurion chamado Pagonix.",
+    "duration": 1320,
+    "durationFormatted": "22 min",
+    "thumbnail": "pkg:/images/episodes/ep1.png",
+    "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+    "streamFormat": "hls",
+    "subtitleTrack": "pkg:/data/subtitles/ep1_pt.vtt",
+    "isLocked": false
+  },
+  {
+    "id": "ep_2",
+    "number": 2,
+    "season": 1,
+    "title": "O Colar do Começo — Parte 2",
+    "subtitle": "A ameaça da Dark Team e o Dirigível",
+    "synopsis": "Koli e Pagonix enfrentam a temível Dark Team, que deseja reiniciar o mundo de Aether usando o poder das sombras. O colar ressoa com Pagonix, e quando tudo parece perdido, surge o lendário Chalicrfax, que os resgata e os transporta até um colossal dirigível nos céus.",
+    "duration": 1380,
+    "durationFormatted": "23 min",
+    "thumbnail": "pkg:/images/episodes/ep2.png",
+    "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+    "streamFormat": "hls",
+    "subtitleTrack": "pkg:/data/subtitles/ep2_pt.vtt",
+    "isLocked": false
+  },
+  {
+    "id": "ep_3",
+    "number": 3,
+    "season": 1,
+    "title": "O Segredo do Dirigível",
+    "subtitle": "Tripulantes de Aether",
+    "synopsis": "A bordo do grandioso dirigível, Koli e Pagonix conhecem os exploradores que guardam segredos milenares sobre o Colar do Começo.",
+    "duration": 1260,
+    "durationFormatted": "21 min",
+    "thumbnail": "pkg:/images/episodes/ep3.png",
+    "videoUrl": "",
+    "isLocked": true
+  },
+  {
+    "id": "ep_4",
+    "number": 4,
+    "season": 1,
+    "title": "Sombras em Aether",
+    "subtitle": "A fortaleza oculta",
+    "synopsis": "A Dark Team prepara seu primeiro movimento para cobrir os vales cristalinos em escuridão.",
+    "duration": 1300,
+    "durationFormatted": "22 min",
+    "thumbnail": "pkg:/images/episodes/ep4.png",
+    "videoUrl": "",
+    "isLocked": true
+  }
+]
