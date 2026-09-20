@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="StoryboardScene" extends="Scene">
+    <interface>
+        <field id="currentScene" type="node" />
+        <field id="storyData" type="assocarray" />
+        <field id="isPlaying" type="boolean" value="false" />
+    </interface>
+    
+    <children>
+        <!-- Fundo Dinâmico -->
+        <Rectangle id="background" width="1280" height="720" color="#000000">
+            <Timer id="bgAnimationTimer" repeat="true" duration="0.05" />
+        </Rectangle>
+        
+        <!-- Grupo para camadas de fundo (gradientes) -->
+        <Group id="backgroundGroup" />
+        
+        <!-- Camada de Partículas/Efeitos -->
+        <Group id="effectsLayer" />
+        
+        <!-- Personagens -->
+        <Group id="characterLayer" />
+        
+        <!-- Balões de Fala e Texto -->
+        <Group id="dialogueLayer">
+            <Rectangle id="speechBubble" width="600" height="120" color="#00000099" opacity="0.9" visible="false">
+                <Label id="speechText" width="560" height="80" 
+                       text="" 
+                       font="font:LargeBoldSystemFont" 
+                       color="#FFFFFF" 
+                       horizAlign="center" 
+                       vertAlign="center"
+                       wrap="true" />
+            </Rectangle>
+        </Group>
+        
+        <!-- Elementos de Cena (formas, textos decorativos) -->
+        <Group id="sceneElementsLayer" />
+        
+        <!-- Controles de Navegação -->
+        <Rectangle id="controlsOverlay" width="1280" height="720" opacity="0">
+            <Label id="skipHint" text="Pressione OK para pular" 
+                   font="font:SmallSystemFont" 
+                   color="#CCCCCC" 
+                   translation="[1100, 680]" />
+        </Rectangle>
+    </children>
+    
+    <script type="text/brightscript" uri="pkg:/components/StoryboardScene.brs" />
+</component>

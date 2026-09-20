@@ -1,0 +1,140 @@
+[
+  {
+    "id": "ep_1",
+    "number": 1,
+    "season": 1,
+    "title": "O Colar do Começo — Parte 1",
+    "subtitle": "Koli e o despertar do cristal",
+    "synopsis": "Koli recebe de sua avó um colar aparentemente normal. Mais tarde, o colar começa a emitir uma luz misteriosa. Os Desbravadores de Tesouro surgem tentando roubá-lo, levando Koli a encontrar um pequeno e curioso Kurion chamado Pagonix.",
+    "duration": 1320,
+    "durationFormatted": "22 min",
+    "thumbnail": "pkg:/images/episodes/ep1.png",
+    "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+    "streamFormat": "hls",
+    "subtitleTrack": "pkg:/data/subtitles/ep1_pt.vtt",
+    "isLocked": false,
+    "director": "Diretor Principal",
+    "writer": "Roteirista Chefe",
+    "release_date": "Disponível agora",
+    "rating": "4.9/5.0",
+    "key_moments": [
+      {"time": "00:03:15", "description": "Koli recebe o Colar da Avó Elara"},
+      {"time": "00:08:42", "description": "Primeira ativação do Colar do Começo"},
+      {"time": "00:14:20", "description": "Encontro com Pagonix nas ruínas"},
+      {"time": "00:19:55", "description": "Fuga dos Desbravadores de Tesouro"}
+    ],
+    "trivia": [
+      "Este episódio introduz 7 referências a lendas antigas de Aether",
+      "O design do Colar levou 6 meses para ser finalizado",
+      "Pagonix foi redesenhado 12 vezes antes da versão final"
+    ],
+    "characters_featured": ["Koli", "Avó Elara", "Pagonix", "Desbravadores"],
+    "kurions_introduced": ["Pagonix"],
+    "locations": ["Vila das Pedras Cantantes", "Ruínas Antigas", "Casa da Avó Elara"],
+    "post_credit_scene": "Uma sombra observa Koli de longe... é o primeiro agente da Dark Team."
+  },
+  {
+    "id": "ep_2",
+    "number": 2,
+    "season": 1,
+    "title": "O Colar do Começo — Parte 2",
+    "subtitle": "A ameaça da Dark Team e o Dirigível",
+    "synopsis": "Koli e Pagonix enfrentam a temível Dark Team, que deseja reiniciar o mundo de Aether usando o poder das sombras. O colar ressoa com Pagonix, e quando tudo parece perdido, surge o lendário Chalicrfax, que os resgata e os transporta até um colossal dirigível nos céus.",
+    "duration": 1380,
+    "durationFormatted": "23 min",
+    "thumbnail": "pkg:/images/episodes/ep2.png",
+    "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+    "streamFormat": "hls",
+    "subtitleTrack": "pkg:/data/subtitles/ep2_pt.vtt",
+    "isLocked": false,
+    "director": "Diretor Principal",
+    "writer": "Roteirista Chefe",
+    "release_date": "Disponível agora",
+    "rating": "4.8/5.0",
+    "key_moments": [
+      {"time": "00:02:30", "description": "Primeiro confronto com soldados da Dark Team"},
+      {"time": "00:09:15", "description": "Pagonix usa Casco Prismático pela primeira vez"},
+      {"time": "00:16:40", "description": "Chalicrfax aparece em cena épica"},
+      {"time": "00:21:50", "description": "Revelação do Grande Dirigível"}
+    ],
+    "trivia": [
+      "Chalicrfax tem 84 penas individuais animadas em CGI",
+      "A cena do voo levou 3 semanas para ser renderizada",
+      "O tema musical da Dark Team usa instrumentos em tom menor"
+    ],
+    "characters_featured": ["Koli", "Pagonix", "Chalicrfax", "Comandante Vorlag", "Soldados da Dark Team"],
+    "kurions_introduced": ["Chalicrfax"],
+    "locations": ["Floresta Cristalina", "Céus de Aether", "Grande Dirigível (exterior)"],
+    "boss_battle": "Onda de Soldados Sombrios",
+    "post_credit_scene": "Capitã Lyra observa os monitores: 'Ela chegou. O Colar escolheu sua portadora.'"
+  },
+  {
+    "id": "ep_3",
+    "number": 3,
+    "season": 1,
+    "title": "O Segredo do Dirigível",
+    "subtitle": "Tripulantes de Aether",
+    "synopsis": "A bordo do grandioso dirigível, Koli e Pagonix conhecem os exploradores que guardam segredos milenares sobre o Colar do Começo. Aprendem sobre a história de Aether, os Portais ancestrais e a verdadeira natureza da ameaça da Dark Team.",
+    "duration": 1260,
+    "durationFormatted": "21 min",
+    "thumbnail": "pkg:/images/episodes/ep3.png",
+    "videoUrl": "",
+    "isLocked": true,
+    "unlock_condition": "Complete as fases 1-10 do jogo",
+    "director": "Diretor Principal",
+    "writer": "Roteirista Chefe",
+    "release_date": "Em breve",
+    "rating": "N/A",
+    "key_moments": [
+      {"time": "00:04:00", "description": "Conhecimento da Capitã Lyra"},
+      {"time": "00:10:30", "description": "Tour pelas salas do Dirigível"},
+      {"time": "00:15:45", "description": "Revelação sobre os 7 Fragmentos do Colar"},
+      {"time": "00:19:20", "description": "Koli aceita sua missão como Guardião"}
+    ],
+    "trivia": [
+      "Cada sala do Dirigível tem 47 detalhes únicos modelados",
+      "A Capitã Lyra foi baseada em exploradoras reais da era vitoriana",
+      "O mapa de Aether mostrado tem mais de 200 localizações nomeadas"
+    ],
+    "characters_featured": ["Koli", "Pagonix", "Capitã Lyra", "Professor Orin", "Mestra Kael", "Arquivista Nym"],
+    "kurions_introduced": [],
+    "locations": ["Grande Dirigível (interior completo)", "Sala de Comando", "Laboratório Kurion", "Biblioteca Ancestral"],
+    "lore_revealed": ["História dos Primeiros Exploradores", "Origem dos Portais", "Profecia do Colar"],
+    "gameplay_unlock": "Lojinha do Dirigível e sistema de upgrades"
+  },
+  {
+    "id": "ep_4",
+    "number": 4,
+    "season": 1,
+    "title": "Sombras em Aether",
+    "subtitle": "A fortaleza oculta",
+    "synopsis": "A Dark Team prepara seu primeiro movimento para cobrir os vales cristalinos em escuridão. Koli deve usar seus novos conhecimentos e aliados para infiltrar-se na Fortaleza de Ferro Negro e descobrir os planos do Comandante Vorlag.",
+    "duration": 1300,
+    "durationFormatted": "22 min",
+    "thumbnail": "pkg:/images/episodes/ep4.png",
+    "videoUrl": "",
+    "isLocked": true,
+    "unlock_condition": "Complete as fases 11-20 do jogo",
+    "director": "Diretor Principal",
+    "writer": "Roteirista Chefe",
+    "release_date": "Em breve",
+    "rating": "N/A",
+    "key_moments": [
+      {"time": "00:05:20", "description": "Infiltração na Fortaleza de Ferro Negro"},
+      {"time": "00:12:00", "description": "Descoberta do Laboratório de Corrupção"},
+      {"time": "00:17:30", "description": "Primeiro encontro direto com Vorlag"},
+      {"time": "00:20:45", "description": "Fuga dramática com informações cruciais"}
+    ],
+    "trivia": [
+      "A Fortaleza tem 140 cômodos modelados, mas apenas 12 são visitados",
+      "Vorlag teve 5 designs diferentes antes do aprovado",
+      "A trilha sonora deste episódio tem 3 temas recorrentes entrelaçados"
+    ],
+    "characters_featured": ["Koli", "Pagonix", "Comandante Vorlag", "Capitã Lyra", "Guerreiros Sombrios"],
+    "kurions_introduced": ["Umbrix (mencionado/corrompido)"],
+    "locations": ["Fortaleza de Ferro Negro", "Laboratório de Corrupção", "Salão do Trono Sombrio"],
+    "boss_battle": "Guardião da Fortaleza (mini-chefe)",
+    "major_revelation": "Vorlag já conhecia a Avó Elara no passado",
+    "gameplay_unlock": "Capítulos 5-6 do jogo e novas habilidades"
+  }
+]
