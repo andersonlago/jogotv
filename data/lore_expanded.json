@@ -1,0 +1,165 @@
+[
+  {
+    "id": "colar",
+    "title": "O Colar do Começo",
+    "tag": "ARTEFATO ANCESTRAL",
+    "subtitle": "A relíquia luminosa da avó de Koli",
+    "description": "Um antigo colar aparentemente comum que possui uma conexão misteriosa com os Kurions e com acontecimentos relacionados à origem de Aether. Quando Koli e Pagonix estão em perigo, o pingente pulsa com energia prismática e desperta forças adormecidas.",
+    "mystery": "Dizem as lendas que existem fragmentos ressonantes espalhados pelos quatro cantos do continente capazes de abrir os Portais de Aether.",
+    "revelation": "O Colar emite um feixe de luz que aponta para o zênite dos céus de Aether, indicando a rota secreta do Grande Dirigível!",
+    "origin_story": "Forjado nas forjas celestiais pelos primeiros guardiões de Aether, o Colar foi dividido em sete fragmentos após a Grande Ruptura. Apenas quando reunidos pelo portador do coração puro, seu verdadeiro poder se revela.",
+    "powers": [
+      "Feixe Prismático: Projeta luz capaz de purificar corrupções sombrias",
+      "Ressonância Ancestral: Comunica-se com Kurions adormecidos",
+      "Visão do Zênite: Revela caminhos ocultos e passagens secretas",
+      "Escudo Temporal: Cria barreiras que desaceleram o tempo por breves momentos"
+    ],
+    "fragments": [
+      {"name": "Fragmento da Floresta", "location": "Bosque das Origens", "obtained": false},
+      {"name": "Fragmento de Cristal", "location": "Minas de Quartzo", "obtained": false},
+      {"name": "Fragmento dos Ventos", "location": "Ilhas de Zéfiro", "obtained": false},
+      {"name": "Fragmento de Magma", "location": "Forjas Vulcânicas", "obtained": false},
+      {"name": "Fragmento Abissal", "location": "Águas Ancestrais", "obtained": false},
+      {"name": "Fragmento Sombrio", "location": "Fortaleza da Dark Team", "obtained": false},
+      {"name": "Fragmento Cósmico", "location": "Vórtice Final", "obtained": false}
+    ],
+    "image": "pkg:/images/lore/colar.png"
+  },
+  {
+    "id": "dirigivel",
+    "title": "O Grande Dirigível",
+    "tag": "BASE MÓVEL DOS CÉUS",
+    "subtitle": "O refúgio dos exploradores de Aether",
+    "description": "Uma colossal fortaleza aérea construída com ligas de cristal e hélices de energia pura. Funciona como quartel-general móvel onde os tripulantes estudam os Kurions e investigam as anomalias da Dark Team.",
+    "mystery": "Os tripulantes pareciam aguardar a chegada do Colar do Começo há mais de três gerações...",
+    "history": "Construído pelos descendentes dos Primeiros Exploradores, o Dirigível vaga pelos céus de Aether há séculos, protegido por camuflagens etéreas que o tornam invisível aos olhos não-iniciados.",
+    "crew_members": [
+      {"name": "Capitã Lyra", "role": "Comandante Suprema", "secret": "Guarda o diário de bordo de sua bisavó, a fundadora da expedição"},
+      {"name": "Professor Orin", "role": "Cientista Chefe", "secret": "Descobriu como sintetizar cristais de cura a partir de lágrimas de Kurion"},
+      {"name": "Mestra Kael", "role": "Treinadora de Combate", "secret": "Ex-membro da Dark Team que desertou após descobrir a verdade"},
+      {"name": "Arquivista Nym", "role": "Guardião do Conhecimento", "secret": "Conhece a localização de todos os Portais de Aether"}
+    ],
+    "image": "pkg:/images/lore/dirigivel.png",
+    "rooms": [
+      {
+        "id": "comando",
+        "name": "Sala de Comando",
+        "desc": "Ponte principal com visores panorâmicos para monitorar tempestades e correntes de ar de Aether. O leme é controlado por cristais de ressonância.",
+        "secret": "Um mapa estelar oculto acende apenas quando o Colar do Começo está a bordo.",
+        "interactions": ["Ativar modo furtivo", "Consultar mapas astronômicos", "Comunicar com torres de vigia"]
+      },
+      {
+        "id": "lab",
+        "name": "Laboratório Kurion",
+        "desc": "Espaço acolhedor com tanques de cristal bioenergético onde Kurions feridos podem descansar e recuperar suas energias primordiais.",
+        "secret": "Pagonix adora as pedras de quartzo que servem de banquete neste laboratório.",
+        "interactions": ["Analisar DNA de Kurion", "Criar poções de cura", "Estudar evolução de espécies"]
+      },
+      {
+        "id": "biblioteca",
+        "name": "Biblioteca Ancestral",
+        "desc": "Repleta de pergaminhos milenares e registros das primeiras expedições aos continentes flutuantes de Aether.",
+        "secret": "Contém ilustrações pré-históricas de Chalicrfax guardando o Colar do Começo.",
+        "interactions": ["Ler lendas antigas", "Decifrar escrituras rúnicas", "Pesquisar fraquezas de inimigos"]
+      },
+      {
+        "id": "mapas",
+        "name": "Sala de Mapas",
+        "desc": "Mesa holográfica tridimensional que rastreia a movimentação e os pontos de influência da temível Dark Team.",
+        "secret": "Sinais de trevas foram detectados próximos à vila natal de Koli.",
+        "interactions": ["Rastrear anomalias", "Planejar rotas de fuga", "Identificar zonas seguras"]
+      },
+      {
+        "id": "hangar",
+        "name": "Hangar Alado",
+        "desc": "Plataforma de lançamento para planadores e local de pouso para Kurions voadores como Chalicrfax.",
+        "secret": "Ventos termais ascendentes permitem decolagens imediatas em situações de emergência.",
+        "interactions": ["Preparar planador", "Chamar Chalicrfax", "Inspeccionar equipamentos de voo"]
+      },
+      {
+        "id": "enfermaria",
+        "name": "Enfermaria de Cristal",
+        "desc": "Centro médico equipado com tecnologia de regeneração acelerada usando cristais pulsantes.",
+        "secret": "As camas de cura cantam melodias ancestrais que aceleram a recuperação.",
+        "interactions": ["Tratar ferimentos", "Armazenar poções", "Descansar para recuperar energia"]
+      },
+      {
+        "id": "arsenal",
+        "name": "Arsenal Étéreo",
+        "desc": "Depósito de armas e equipamentos encantados com propriedades mágicas dos cristais de Aether.",
+        "secret": "Algumas armas só podem ser empunhadas por quem possui o Colar do Começo.",
+        "interactions": ["Melhorar equipamentos", "Forjar novos itens", "Encantar armas com elementos"]
+      }
+    ]
+  },
+  {
+    "id": "dark_team",
+    "title": "A Dark Team",
+    "tag": "ORGANIZAÇÃO SOMBRIA",
+    "subtitle": "Os arquitetos do caos em Aether",
+    "description": "Uma facção secreta que busca reiniciar o mundo de Aether utilizando o poder ancestral das trevas. Acreditam que apenas através da destruição total poderão criar um mundo perfeito, livre das imperfeições atuais.",
+    "philosophy": "Para eles, a existência dos Kurions é uma aberração cósmica que drena a energia vital do planeta. Seu objetivo é extinguir todas as criaturas mágicas e restaurar Aether a um estado 'puro' de existência.",
+    "hierarchy": [
+      {"rank": "Supremo", "title": "O Arquiteto", "description": "Líder misterioso cuja identidade ninguém conhece. Dizem ser um antigo guardião corrompido."},
+      {"rank": "Elite", "title": "Generais das Trevas", "description": "Quatro comandantes que controlam exércitos sombrios em cada elemento: Fogo, Água, Terra e Ar."},
+      {"rank": "Oficiais", "title": "Capitães Sombrios", "description": "Lideram operações específicas e caçam Kurions raros para experimentos."},
+      {"rank": "Soldados", "title": "Guerreiros Corrompidos", "description": "Combatentes comuns que vestem armaduras negras e empunham armas de energia escura."}
+    ],
+    "bases": [
+      {"name": "Fortaleza de Ferro Negro", "location": "Montanhas Proibidas", "status": "Ativa"},
+      {"name": "Laboratório Submerso", "location": "Fossa Abissal", "status": "Oculta"},
+      {"name": "Torre de Distorção", "location": "Deserto de Cinzas", "status": "Em construção"},
+      {"name": "Portal do Vazio", "location": "Dimensão Paralela", "status": "Instável"}
+    ],
+    "weaknesses": [
+      "Luz prismática do Colar enfraquece seus soldados",
+      "Gritos de Kurions causam dor intensa nos Generais",
+      "Cristais puros interrompem seus rituais de corrupção",
+      "União de aliados fortalece a resistência contra manipulação mental"
+    ],
+    "image": "pkg:/images/characters/dark_team.png"
+  },
+  {
+    "id": "portals",
+    "title": "Portais de Aether",
+    "tag": "PASSAGENS DIMENSIONAIS",
+    "subtitle": "Gateways entre reinos e eras",
+    "description": "Antigos círculos de pedra energética que conectam diferentes regiões de Aether e, em casos raros, permitem viagens temporais limitadas. Apenas portadores do Colar do Começo podem ativá-los com segurança.",
+    "types": [
+      {"name": "Portal Elemental", "function": "Teletransporte entre biomas", "activation": "Cristal correspondente ao elemento"},
+      {"name": "Portal Temporal", "function": "Vislumbres do passado/futuro", "activation": "Alinhamento celestial raro"},
+      {"name": "Portal de Cura", "function": "Restaura energia vital", "activation": "Presença de Kurion lendário"},
+      {"name": "Portal de Batalha", "function": "Arena de treinamento", "activation": "Vontade do usuário + Colar"}
+    ],
+    "legends": [
+      "Os Primeiros Viajantes usavam os Portais para comerciar entre continentes em segundos",
+      "Um Portal proibido leva ao Reino das Sombras, de onde vieram as trevas da Dark Team",
+      "Dizem que existe um Portal Mestre que concede desejos, mas requer sacrifício de um Kurion ancestral"
+    ],
+    "image": "pkg:/images/lore/portals.png"
+  },
+  {
+    "id": "kurions_origins",
+    "title": "A Origem dos Kurions",
+    "tag": "CRIATURAS PRIMORDIAIS",
+    "subtitle": "Guardiões da essência de Aether",
+    "description": "Os Kurions nasceram das primeiras gotas de luz que tocaram Aether após a criação do mundo. Cada Kurion carrega um fragmento da essência elemental do planeta, servindo como guardiões naturais do equilíbrio.",
+    "creation_myth": "Quando o Grande Espírito soprou vida sobre Aether, suas lágrimas de alegria se cristalizaram e ganharam consciência. Assim surgiram os primeiros Kurions: Pagonix da terra, Chalicrfax dos céus, e outros perdidos no tempo.",
+    "evolution_stages": [
+      {"stage": "Bebê", "description": "Forma inicial, pequena e vulnerável, precisa de proteção", "power_level": "10%"},
+      {"stage": "Jovem", "description": "Começa a desenvolver habilidades básicas de seu elemento", "power_level": "40%"},
+      {"stage": "Adulto", "description": "Domina plenamente seus poderes e pode ensinar outros", "power_level": "75%"},
+      {"stage": "Ancião", "description": "Sábio e poderoso, capaz de realizar milagres elementais", "power_level": "95%"},
+      {"stage": "Lendário", "description": "Transcendeu limites, tornando-se parte do próprio Aether", "power_level": "100%+"}
+    ],
+    "known_species": [
+      {"name": "Pagonix", "element": "Terra/Cristal", "rarity": "Raro"},
+      {"name": "Chalicrfax", "element": "Ar/Luz", "rarity": "Lendário"},
+      {"name": "Ignitus", "element": "Fogo/Magma", "rarity": "Muito Raro", "status": "Desconhecido"},
+      {"name": "Aquarius", "element": "Água/Gelo", "rarity": "Muito Raro", "status": "Avistado raramente"},
+      {"name": "Umbrix", "element": "Trevas/Sombra", "rarity": "Proibido", "status": "Corrompido pela Dark Team"}
+    ],
+    "bond_with_humans": "Apenas humanos de coração puro podem formar elos com Kurions. Este vínculo é eterno e amplifica os poderes de ambos. Koli e Pagonix representam o primeiro elo registrado em mil anos.",
+    "image": "pkg:/images/lore/kurions_origin.png"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "capitulo_1": {
+    "titulo": "O Despertar das Sombras",
+    "cenas": [
+      {
+        "id": "cena_01",
+        "duracao_segundos": 5,
+        "fundo": {
+          "tipo": "gradiente",
+          "cores": ["#0f0c29", "#302b63", "#24243e"],
+          "animacao": "respirar"
+        },
+        "elementos": [
+          {
+            "tipo": "texto",
+            "conteudo": "Há milênios, Aether dormia...",
+            "posicao": {"x": 300, "y": 100},
+            "estilo": "titulo_epico",
+            "efeito": "digitar"
+          },
+          {
+            "tipo": "forma",
+            "forma": "circulo",
+            "cor": "#FFD700",
+            "opacidade": 0.1,
+            "tamanho": 400,
+            "posicao": {"x": 640, "y": 360},
+            "animacao": "pulsar_lento"
+          }
+        ]
+      },
+      {
+        "id": "cena_02",
+        "duracao_segundos": 6,
+        "fundo": {
+          "tipo": "imagem_referencia", 
+          "cor_base": "#2c3e50",
+          "detalhes": "floresta_sombria"
+        },
+        "personagens": [
+          {
+            "id": "heroi",
+            "sprite": "silhueta_heroi.png",
+            "posicao_inicial": {"x": 200, "y": 500},
+            "posicao_final": {"x": 400, "y": 500},
+            "animacao": "deslizar_suave",
+            "balao_fala": "Sinto uma presença antiga aqui."
+          }
+        ],
+        "efeitos": [
+          { "tipo": "particulas", "estilo": "vagalumes", "quantidade": 20 }
+        ]
+      },
+      {
+        "id": "cena_03",
+        "duracao_segundos": 8,
+        "fundo": {
+          "tipo": "gradiente",
+          "cores": ["#4b0000", "#000000"],
+          "transicao": "flash_vermelho"
+        },
+        "personagens": [
+          {
+            "id": "vilao",
+            "sprite": "olhos_sombrios.png",
+            "posicao": {"x": 640, "y": 200},
+            "tamanho": 150,
+            "animacao": "tremer_ameaca"
+          }
+        ],
+        "balao_fala": {
+          "texto": "Eles nunca deveriam ter acordado.",
+          "origem": "vilao",
+          "estilo": "ameacador"
+        }
+      }
+    ]
+  }
+}

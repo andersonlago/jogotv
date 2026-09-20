@@ -1,0 +1,237 @@
+[
+  {
+    "id": "koli",
+    "name": "Koli",
+    "role": "Protagonista",
+    "age": 14,
+    "hometown": "Vila das Pedras Cantantes",
+    "description": "Uma jovem corajosa, leal e cheia de curiosidade sobre o mundo além de sua vila. Ganhou de sua avó o Colar do Começo e estabeleceu um elo inquebrável com o pequeno Kurion Pagonix.",
+    "personality_traits": [
+      "Corajosa diante do perigo",
+      "Curiosa e investigativa",
+      "Leal aos amigos até o fim",
+      "Impulsiva às vezes, mas de bom coração",
+      "Protetora com criaturas vulneráveis"
+    ],
+    "abilities": [
+      {"name": "Feixe Prismático", "description": "Dispara luz concentrada do Colar para atacar e ativar mecanismos", "damage": "Médio", "cooldown": "2s"},
+      {"name": "Visão da Verdade", "description": "Revela passagens secretas e inimigos invisíveis por breves momentos", "damage": "N/A", "cooldown": "30s"},
+      {"name": "Salto Étéreo", "description": "Pulo aprimorado que permite alcançar plataformas distantes", "damage": "N/A", "cooldown": "5s"},
+      {"name": "Chamado Ancestral", "description": "Invoca Chalicrfax para resgate em situações críticas (apenas story)", "damage": "Alto", "cooldown": "Story only"}
+    ],
+    "equipment": [
+      {"name": "Colar do Começo", "slot": "Amuleto", "power": "Lendário", "effect": "Fonte de todos os poderes de Koli"},
+      {"name": "Botas de Exploradora", "slot": "Pés", "power": "Comum", "effect": "+10% velocidade de movimento"},
+      {"name": "Mochila de Suprimentos", "slot": "Costas", "power": "Comum", "effect": "Carrega até 10 poções"}
+    ],
+    "knownKurions": "Pagonix, Chalicrfax",
+    "episodes": "EP. 1, EP. 2, EP. 3, EP. 4",
+    "voice_actor": "Dubladora principal - Tom juvenil e determinado",
+    "trivia": [
+      "Koli coleciona pedras brilhantes desde criança",
+      "Seu prato favorito é pão de mel com frutas de Aether",
+      "Tem medo de alturas extremas, mas enfrenta por causa de Pagonix",
+      "O Colar escolheu Koli especificamente por seu coração puro"
+    ],
+    "character_arc": "De uma garota comum de vila a guardiã ancestral de Aether, aprendendo que verdadeira coragem vem de proteger aqueles que ama.",
+    "image": "pkg:/images/characters/koli.png"
+  },
+  {
+    "id": "pagonix",
+    "name": "Pagonix",
+    "role": "Kurion Parceiro / Mascote Heroico",
+    "age": "Desconhecida (criança em anos de Kurion)",
+    "hometown": "Vales Cristalinos de Aether",
+    "description": "Pequeno Kurion cristalino semelhante a uma tartaruguinha. Extremamente amigável, curioso e corajoso ao lado de Koli. Comunica-se pelo som 'PAGO! PAGO!' e emite pulsos de energia quando o Colar brilha.",
+    "personality_traits": [
+      "Extremamente leal a Koli",
+      "Curioso sobre tudo",
+      "Corajoso apesar do tamanho",
+      "Gosta de brincadeiras",
+      "Protetor instintivo"
+    ],
+    "abilities": [
+      {"name": "Casco Prismático", "description": "Reflete ataques inimigos e projeta feixes de luz defensiva", "damage": "Médio-Alto", "cooldown": "8s"},
+      {"name": "Pulso de Aether", "description": "Onda de energia que atordoa inimigos próximos e ativa cristais", "damage": "Baixo", "cooldown": "12s"},
+      {"name": "Escudo Terrestre", "description": "Cristaliza o solo criando barreira temporária para aliados", "damage": "N/A", "cooldown": "20s"},
+      {"name": "Faro de Cristais", "description": "Detecta tesouros e itens escondidos nas proximidades", "damage": "N/A", "cooldown": "Passive"}
+    ],
+    "evolution_potential": "Pode evoluir para forma adulta se Koli completar todas as 40 fases e coletar todos os fragmentos do Colar",
+    "favorite_foods": ["Cristais de quartzo rosa", "Gotas de orvalho lunar", "Pedras de rio polidas"],
+    "sounds": [
+      "PAGO! PAGO! (feliz/excitado)",
+      "Pa...go... (triste/preocupado)",
+      "PAGOOO! (determinado/atacando)",
+      "Go... pagooo... (cansado/ferido)"
+    ],
+    "knownKurions": "Chalicrfax",
+    "episodes": "EP. 1, EP. 2, EP. 3, EP. 4",
+    "trivia": [
+      "Adora tirar sonecas em superfícies de cristal quentes",
+      "Consegue sentir emoções de Koli através do Colar",
+      "Tem um esconderijo secreto de pedrinhas brilhantes no Dirigível",
+      "Quando dorme, seu casco brilha suavemente no escuro"
+    ],
+    "bond_level_with_koli": "Máximo - Elo Ancestral Raro",
+    "image": "pkg:/images/characters/pagonix.png"
+  },
+  {
+    "id": "chalicrfax",
+    "name": "Chalicrfax",
+    "role": "Guardião Alado de Aether / Montaria Lendária",
+    "age": "Milhares de anos (imortal)",
+    "hometown": "Camadas Superiores da Troposfera de Aether",
+    "description": "Majestoso Kurion voador com penas bioluminescentes. Surge em momentos cruciais de perigo e levou Koli e Pagonix aos céus até o dirigível misterioso.",
+    "personality_traits": [
+      "Sábio e antigo",
+      "Protetor dos inocentes",
+      "Reservado mas bondoso",
+      "Fiel aos guardiões do Colar",
+      "Solitário por natureza"
+    ],
+    "abilities": [
+      {"name": "Voo Transcendente", "description": "Corta tempestades de Aether sem desacelerar, carregando passageiros", "damage": "N/A", "cooldown": "Story/Mount"},
+      {"name": "Rajada Solar", "description": "Cria correntes de ar radiante para afastar inimigos e iluminar áreas escuras", "damage": "Alto", "cooldown": "15s"},
+      {"name": "Salto Dimensional", "description": "Cria vórtices seguros para transportar companheiros entre locais distantes", "damage": "N/A", "cooldown": "60s"},
+      {"name": "Grito Celestial", "description": "Atordoia todos os inimigos na tela e revela pontos fracos", "damage": "Médio", "cooldown": "45s"}
+    ],
+    "stats": {
+      "wingspan": "12 metros",
+      "max_speed": "340 km/h",
+      "altitude_limit": "Estratosfera de Aether",
+      "lifespan": "Imortal enquanto Aether existir"
+    },
+    "knownKurions": "Pagonix e todos os Kurions voadores",
+    "episodes": "EP. 2, EP. 3",
+    "trivia": [
+      "Suas penas caídas viram cristais flutuantes que curam ferimentos",
+      "Já protegeu os Primeiros Guardhões do Colar há milênios",
+      "Consegue prever tempestades horas antes delas acontecerem",
+      "Tem um ninho secreto nas nuvens mais altas de Aether"
+    ],
+    "mount_unlock_condition": "Complete a Fase 20 (Derrote a Serpente dos Ventos)",
+    "image": "pkg:/images/characters/chalicrfax.png"
+  },
+  {
+    "id": "dark_team_commander",
+    "name": "Comandante Vorlag",
+    "role": "General das Trevas / Antagonista Principal",
+    "age": "Desconhecida (corrompido há décadas)",
+    "hometown": "Ex-Vila das Sombras (agora destruída)",
+    "description": "Antigo explorador de Aether que foi corrompido pelo poder das trevas após encontrar um artefato proibido. Agora lidera a Dark Team em sua cruzada para extinguir todos os Kurions.",
+    "personality_traits": [
+      "Ambicioso e implacável",
+      "Carismático com seus seguidores",
+      "Obcecado por poder",
+      "Traumatizado por perdas passadas",
+      "Acredita piamente em sua missão"
+    ],
+    "abilities": [
+      {"name": "Espada da Corrupção", "description": "Arma que drena energia vital de Kurions e transforma terrenos em áreas mortas", "damage": "Muito Alto", "cooldown": "3s"},
+      {"name": "Aura Sombria", "description": "Campo que enfraquece habilidades baseadas em luz e cura", "damage": "Passivo", "cooldown": "Sempre ativo"},
+      {"name": "Invocação de Guerreiros", "description": "Chama soldados corrompidos para lutar ao seu lado", "damage": "Variável", "cooldown": "20s"},
+      {"name": "Forma das Trevas", "description": "Transformação final que aumenta todos os poderes (fase final da batalha)", "damage": "Extremo", "cooldown": "Boss fight only"}
+    ],
+    "motivation": "Perdeu sua família para um desastre natural que acreditava poder ter sido prevenido se tivesse poder suficiente. Busca 'reiniciar' Aether para eliminar todo sofrimento, mesmo que isso signifique destruir os Kurions.",
+    "weaknesses": [
+      "Luz prismática do Colar do Começo",
+      "União verdadeira entre humanos e Kurions",
+      "Memórias de seu eu anterior (pode ser usado para redenção)",
+      "Arrogância em subestimar o poder da amizade"
+    ],
+    "boss_fights": [
+      {"phase": "Encontro 1", "location": "Fortaleza de Ferro Negro", "difficulty": "Médio"},
+      {"phase": "Encontro 2", "location": "Portal do Vazio", "difficulty": "Difícil"},
+      {"phase": "Batalha Final", "location": "Santuário Cósmico", "difficulty": "Extremo"}
+    ],
+    "redemption_possibility": "Secret ending: Se Koli coletar todos os fragmentos do Colar antes da batalha final, pode purificar Vorlag em vez de derrotá-lo",
+    "episodes": "EP. 1 (mencionado), EP. 2, EP. 4",
+    "trivia": [
+      "Já foi amigo do avô de Koli",
+      "Seu artefato de corrupção era originalmente um fragmento do Colar",
+      "Tem cicatrizes de batalhas contra Kurions lendários",
+      "Em sua forma humana original, tinha olhos azuis como os de Koli"
+    ],
+    "image": "pkg:/images/characters/vorlag.png"
+  },
+  {
+    "id": "grandma",
+    "name": "Avó Elara",
+    "role": "Guardiã dos Segredos / Mentora",
+    "age": "78 anos",
+    "hometown": "Vila das Pedras Cantantes",
+    "description": "Sábia e protetora, confiou a Koli a relíquia ancestral de sua linhagem: o Colar do Começo, sabendo que o destino do mundo logo despertaria. Foi Guardiã do Colar em sua juventude.",
+    "personality_traits": [
+      "Extremamente sábia e paciente",
+      "Protetora mas não superprotetora",
+      "Misteriosa sobre o passado",
+      "Carinhosa com Koli",
+      "Corajosa em sua própria maneira"
+    ],
+    "backstory": "Elara foi uma aventureira em sua juventude, viajando por Aether com seu próprio Kurion parceiro. Quando envelheceu, passou o Colar para a próxima geração, escolhendo Koli por ver nela o mesmo espírito destemido.",
+    "abilities": [
+      {"name": "Sabedoria Ancestral", "description": "Conhece lendas, segredos e fraquezas de criaturas antigas", "damage": "N/A", "cooldown": "Passivo"},
+      {"name": "Cura Tradicional", "description": "Prepara poções e remédios naturais poderosos", "damage": "N/A", "cooldown": "Varies"},
+      {"name": "Visão do Passado", "description": "Pode ver ecos de eventos importantes relacionados ao Colar", "damage": "N/A", "cooldown": "Story only"}
+    ],
+    "knownKurions": "Zephyrix (falecido), Pagonix, Chalicrfax",
+    "episodes": "EP. 1",
+    "secrets": [
+      "Conhece a localização de todos os fragmentos do Colar",
+      "Já visitou o Grande Dirigível em sua juventude",
+      "Mantém correspondência secreta com a Capitã Lyra",
+      "Sabe a verdadeira identidade do Arquiteto da Dark Team"
+    ],
+    "quotes": [
+      "O Colar não escolhe os fortes, Koli. Escolhe os de coração puro.",
+      "Às vezes, as maiores aventuras começam com um simples passo fora de casa.",
+      "Pagonix não é apenas seu companheiro. É sua outra metade ancestral."
+    ],
+    "trivia": [
+      "Colecionava mapas antigos e os escondia pela casa",
+      "Ensinou Koli a ler escrituras rúnicas sem ela perceber",
+      "Tem uma cicatriz de batalha contra um general da Dark Team",
+      "Seu Kurion Zephyrix sacrificou-se para salvar a vila há 40 anos"
+    ],
+    "image": "pkg:/images/characters/grandma.png"
+  },
+  {
+    "id": "captain_lyra",
+    "name": "Capitã Lyra",
+    "role": "Comandante do Grande Dirigível / Aliada",
+    "age": 42,
+    "hometown": "Cidadela Flutuante de Aether",
+    "description": "Líder carismática e experiente do Grande Dirigível. Descende de uma longa linhagem de exploradores dos céus e guarda segredos sobre o Colar há três gerações.",
+    "personality_traits": [
+      "Líder nata e inspiradora",
+      "Estratégica e calculista",
+      "Protetora com sua tripulação",
+      "Respeita tradição mas aceita mudanças",
+      "Tem senso de humor seco"
+    ],
+    "abilities": [
+      {"name": "Comando Tático", "description": "Coordena ataques e defesas da tripulação com eficiência máxima", "damage": "N/A", "cooldown": "Battle only"},
+      {"name": "Piloto Mestre", "description": "Consegue manobrar o Dirigível através das piores tempestades", "damage": "N/A", "cooldown": "Passivo"},
+      {"name": "Negociação", "description": "Persuasão excepcional para diplomacia e obtenção de informações", "damage": "N/A", "cooldown": "Story"}
+    ],
+    "equipment": [
+      {"name": "Espada de Cristal Azul", "slot": "Arma", "power": "Raro", "effect": "Corta através de barreiras mágicas"},
+      {"name": "Diário de Bordo Ancestral", "slot": "Item", "power": "Lendário", "effect": "Contém rotas secretas e códigos antigos"}
+    ],
+    "relationship_with_koli": "Mentora distante que vê em Koli o potencial para superar suas próprias conquistas",
+    "episodes": "EP. 3 (estreia), EP. 4",
+    "secrets": [
+      "Seu diário contém a localização do Portal Mestre",
+      "Já enfrentou Vorlag em batalha há 20 anos",
+      "Está preparando Koli para assumir seu legado",
+      "Suspeita que há um traidor na tripulação"
+    ],
+    "trivia": [
+      "Tem uma coleção de mapas de estrelas cadentes",
+      "Seu primeiro nome verdadeiro é mantido em segredo por tradição",
+      "Consegue assobiar melodias que acalmam Kurions agitados",
+      "Dorme apenas 4 horas por noite para monitorar os céus"
+    ],
+    "image": "pkg:/images/characters/lyra.png"
+  }
+]

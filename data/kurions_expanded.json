@@ -1,0 +1,182 @@
+[
+  {
+    "id": "pagonix",
+    "name": "Pagonix",
+    "types": "Cristal / Terrestre",
+    "sound": "PAGO! PAGO!",
+    "habitat": "Vales Cristalinos de Aether",
+    "rarity": "Raro / Mítico",
+    "description": "Um pequeno Kurion com aparência que lembra uma tartaruguinha de cristal lapidado. Possui corpo translúcido com reflexos esmeralda e turquesa. É extremamente curioso, leal e protege Koli a todo custo.",
+    "abilities": [
+      "Casco Prismático: Reflete ataques e projeta feixes de luz",
+      "Pulso de Aether: Emite ondas de energia pura ao ouvir o som do Colar",
+      "Escudo Terrestre: Cristaliza o solo para proteger aliados"
+    ],
+    "evolution_chain": {
+      "baby": {"name": "Pagonix Bebê", "power": 10, "unlocked_by_default": true},
+      "young": {"name": "Pagonix Jovem", "power": 40, "unlock_condition": "Complete 10 fases"},
+      "adult": {"name": "Pagonix Adulto", "power": 75, "unlock_condition": "Complete 25 fases"},
+      "elder": {"name": "Pagonix Ancião", "power": 95, "unlock_condition": "Colete 5 fragmentos do Colar"},
+      "legendary": {"name": "Pagonix Primordial", "power": 120, "unlock_condition": "Complete todas as 40 fases + todos os fragmentos"}
+    },
+    "base_stats": {
+      "hp": 100,
+      "defense": 85,
+      "speed": 60,
+      "attack": 70,
+      "special": 90
+    },
+    "image": "pkg:/images/kurions/pagonix.png"
+  },
+  {
+    "id": "chalicrfax",
+    "name": "Chalicrfax",
+    "types": "Voador / Arcano",
+    "sound": "CHALIIII-KRAX!",
+    "habitat": "Camadas Superiores da Troposfera de Aether",
+    "rarity": "Lendário",
+    "description": "Criatura alada imponente com envergadura descomunal e asas formadas por plumas etéreas. É o guardião dos exploradores dos céus e o elo entre a terra firme e o Grande Dirigível.",
+    "abilities": [
+      "Voo Transcendente: Corta tempestades de Aether sem desacelerar",
+      "Rajada Solar: Cria correntes de ar radiante para afastar inimigos",
+      "Salto Dimensional: Cria vórtices seguros para transportar companheiros"
+    ],
+    "evolution_chain": {
+      "young": {"name": "Chalicrfax Jovem", "power": 60, "unlocked_by_default": false},
+      "adult": {"name": "Chalicrfax Adulto", "power": 85, "unlock_condition": "Derrote a Serpente dos Ventos (Fase 20)"},
+      "elder": {"name": "Chalicrfax Ancião", "power": 95, "unlock_condition": "Complete o Capítulo 6"},
+      "legendary": {"name": "Chalicrfax Celestial", "power": 130, "unlock_condition": "Finalize o jogo com ending verdadeiro"}
+    },
+    "base_stats": {
+      "hp": 150,
+      "defense": 70,
+      "speed": 95,
+      "attack": 90,
+      "special": 100
+    },
+    "mountable": true,
+    "mount_unlock_phase": 20,
+    "image": "pkg:/images/kurions/chalicrfax.png"
+  },
+  {
+    "id": "ignitus",
+    "name": "Ignitus",
+    "types": "Fogo / Magma",
+    "sound": "IGNIS! ROOOAR!",
+    "habitat": "Forjas Vulcânicas e Cavernas Ígneas",
+    "rarity": "Muito Raro",
+    "description": "Kurion majestoso com corpo formado de rocha vulcânica e veios de magma brilhante. Suas chamas não queimam aliados, apenas purificam corrupções. Guardião das forjas ancestrais.",
+    "abilities": [
+      "Erupção Controlada: Explosão de magma que derrete barreiras de gelo e metal",
+      "Aura de Calor: Aumenta poder de ataques de aliados próximos",
+      "Forma de Lava: Torna-se temporariamente invulnerável e deixa rastro de fogo"
+    ],
+    "evolution_chain": {
+      "baby": {"name": "Ignitus Bebê", "power": 15, "unlock_condition": "Resgate na Fase 23"},
+      "young": {"name": "Ignitus Jovem", "power": 50, "unlock_condition": "Complete 28 fases"},
+      "adult": {"name": "Ignitus Adulto", "power": 80, "unlock_condition": "Derrote o Colosso de Magma"},
+      "legendary": {"name": "Ignitus Primordial", "power": 125, "unlock_condition": "Colete Fragmento de Magma + Complete lado secreto"}
+    },
+    "base_stats": {
+      "hp": 120,
+      "defense": 90,
+      "speed": 50,
+      "attack": 95,
+      "special": 85
+    },
+    "status": "Desconhecido / Para descobrir",
+    "image": "pkg:/images/kurions/ignitus.png"
+  },
+  {
+    "id": "aquarius",
+    "name": "Aquarius",
+    "types": "Água / Gelo",
+    "sound": "GLUB... AQUA-RIS!",
+    "habitat": "Profundezas das Águas Ancestrais e Corais Sagrados",
+    "rarity": "Muito Raro",
+    "description": "Kurion serpenteado com escamas azul-profundo que brilham como estrelas no oceano. Controla marés e pode congelar superfícies aquáticas para criar caminhos.",
+    "abilities": [
+      "Onda Curativa: Restaura HP de todos os aliados em área",
+      "Congelamento Instantâneo: Cria plataformas de gelo sobre água",
+      "Tsunami Purificador: Varre inimigos com onda massiva de água sagrada"
+    ],
+    "evolution_chain": {
+      "baby": {"name": "Aquarius Bebê", "power": 15, "unlock_condition": "Resgate na Fase 28"},
+      "young": {"name": "Aquarius Jovem", "power": 50, "unlock_condition": "Complete 32 fases"},
+      "adult": {"name": "Aquarius Adulto", "power": 80, "unlock_condition": "Derrote Leviatã Abissal"},
+      "legendary": {"name": "Aquarius Oceânico", "power": 125, "unlock_condition": "Colete Fragmento Abissal + Encontre santuário secreto"}
+    },
+    "base_stats": {
+      "hp": 110,
+      "defense": 75,
+      "speed": 80,
+      "attack": 75,
+      "special": 105
+    },
+    "status": "Avistado raramente",
+    "image": "pkg:/images/kurions/aquarius.png"
+  },
+  {
+    "id": "terrax",
+    "name": "Terrax",
+    "types": "Terra / Planta",
+    "sound": "GROOOOK... TERRRAAA!",
+    "habitat": "Bosque das Origens e Templos Subterrâneos",
+    "rarity": "Comum (mas sábio)",
+    "description": "Kurion gigantesco semelhante a um golem de madeira viva coberto de musgo e flores. Extremamente antigo, serve como guardião das florestas e conhece segredos milenares.",
+    "abilities": [
+      "Raízes Protetoras: Cria barreiras inquebráveis temporárias",
+      "Crescimento Acelerado: Faz plantas crescerem instantaneamente para criar plataformas",
+      "Terremoto Controlado: Atordoa todos os inimigos no chão"
+    ],
+    "evolution_chain": {
+      "young": {"name": "Terrax Jovem", "power": 45, "unlock_condition": "Complete Fase 3"},
+      "adult": {"name": "Terrax Guardião", "power": 75, "unlock_condition": "Resolva puzzle secreto do Bosque"},
+      "elder": {"name": "Terrax Ancião", "power": 95, "unlock_condition": "Fale com Terrax em todas as regiões"},
+      "legendary": {"name": "Terrax Primordial", "power": 115, "unlock_condition": "Descubra a origem dos Kurions terrestres"}
+    },
+    "base_stats": {
+      "hp": 140,
+      "defense": 95,
+      "speed": 40,
+      "attack": 70,
+      "special": 80
+    },
+    "role": "NPC Sábio / Aliado",
+    "image": "pkg:/images/kurions/terrax.png"
+  },
+  {
+    "id": "umbrix_corrompido",
+    "name": "Umbrix (Corrompido)",
+    "types": "Trevas / Sombra",
+    "sound": "Sssshhh... UMBRA...",
+    "habitat": "Originalmente: Todas as regiões / Agora: controlado pela Dark Team",
+    "rarity": "Proibido / Corrompido",
+    "description": "Antigo Kurion de sombra que foi corrompido pela Dark Team. Originalmente era guardião do equilíbrio entre luz e trevas. Pode ser purificado se Koli encontrar todos os fragmentos do Colar.",
+    "abilities": [
+      "Manto das Sombras: Torna-se invisível por breves momentos",
+      "Drenagem de Energia: Rouba HP de inimigos para curar aliados",
+      "Portal Sombrio: Teletransporta aliados para áreas seguras"
+    ],
+    "purification_condition": "Colete todos os 7 fragmentos do Colar ANTES da batalha final",
+    "purified_form": {
+      "name": "Umbrix Luminoso",
+      "types": "Luz / Equilíbrio",
+      "power": 140,
+      "abilities_purified": [
+        "Equilíbrio Cósmico: Neutraliza poderes de trevas e luz excessivos",
+        "Julgamento Ancestral: Dano massivo apenas em inimigos corrompidos",
+        "Redenção: Chance de converter inimigos comuns em aliados"
+      ]
+    },
+    "base_stats": {
+      "hp": 100,
+      "defense": 65,
+      "speed": 90,
+      "attack": 85,
+      "special": 110
+    },
+    "status": "Inimigo / Potencial aliado secreto",
+    "image": "pkg:/images/kurions/umbrix.png"
+  }
+]
