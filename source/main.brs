@@ -6,24 +6,9 @@ sub Main()
     m.port = CreateObject("roMessagePort")
     screen.SetMessagePort(m.port)
     
-    ' Verificar se deve mostrar storyboard ou jogo principal
-    showStoryboard = false  ' Mudar para true para testar storyboard
-    
-    if showStoryboard then
-        ' Mostrar demonstração do storyboard
-        scene = screen.CreateScene("StoryboardScene")
-        screen.Show()
-        
-        ' Carregar e passar dados da história para o componente
-        storyData = LoadStoryData()
-        if storyData <> invalid and storyData.capitulo_1 <> invalid then
-            scene.storyData = storyData.capitulo_1
-        end if
-    else
-        ' Cria e exibe a cena principal do jogo
-        scene = screen.CreateScene("MainScene")
-        screen.Show()
-    end if
+    ' Cria e exibe a cena principal do aplicativo (com menu integrado)
+    scene = screen.CreateScene("MainScene")
+    screen.Show()
     
     ' Loop de eventos da aplicação para manter a cena ativa
     while(true)

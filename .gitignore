@@ -1,7 +1,7 @@
-```
 # Build artifacts
 *.pyc
 __pycache__/
+*.zip
 
 # Dependencies
 node_modules/
@@ -51,4 +51,3 @@ sdist/
 var/
 wheels/
 *.egg
-```

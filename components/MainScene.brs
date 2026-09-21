@@ -82,18 +82,20 @@ sub captureNodeReferences()
         m.top.findNode("menuItem_3"),
         m.top.findNode("menuItem_4"),
         m.top.findNode("menuItem_5"),
-        m.top.findNode("menuItem_6")
+        m.top.findNode("menuItem_6"),
+        m.top.findNode("menuItem_7")
     ]
 
     ' Telas Centrais
     m.viewHome = m.top.findNode("viewHome")
     m.viewEpisodes = m.top.findNode("viewEpisodes")
     m.viewGame = m.top.findNode("viewGame")
+    m.viewStoryboard = m.top.findNode("viewStoryboard")
     m.viewLore = m.top.findNode("viewLore")
     m.viewKurions = m.top.findNode("viewKurions")
     m.viewCharacters = m.top.findNode("viewCharacters")
     m.viewSettings = m.top.findNode("viewSettings")
-    m.views = [m.viewHome, m.viewEpisodes, m.viewGame, m.viewLore, m.viewKurions, m.viewCharacters, m.viewSettings]
+    m.views = [m.viewHome, m.viewEpisodes, m.viewGame, m.viewStoryboard, m.viewLore, m.viewKurions, m.viewCharacters, m.viewSettings]
 
     ' Home Nodes
     m.homeEpTitle = m.top.findNode("homeEpTitle")
@@ -275,6 +277,24 @@ sub captureNodeReferences()
     m.gameInvulnerableTimer = m.top.findNode("gameInvulnerableTimer")
     m.gameShieldTimer = m.top.findNode("gameShieldTimer")
     m.gameShieldCooldownTimer = m.top.findNode("gameShieldCooldownTimer")
+
+    ' Storyboard / HQ Nodes
+    m.btnStartComic = m.top.findNode("btnStartComic")
+    m.btnStartComicLabel = m.top.findNode("btnStartComicLabel")
+    m.storyboardContainer = m.top.findNode("storyboardContainer")
+    m.sbBackground = m.top.findNode("sbBackground")
+    m.sbBackgroundGroup = m.top.findNode("sbBackgroundGroup")
+    m.sbEffectsLayer = m.top.findNode("sbEffectsLayer")
+    m.sbCharacterLayer = m.top.findNode("sbCharacterLayer")
+    m.sbSceneElementsLayer = m.top.findNode("sbSceneElementsLayer")
+    m.sbDialogueLayer = m.top.findNode("sbDialogueLayer")
+    m.sbSpeechBubble = m.top.findNode("sbSpeechBubble")
+    m.sbSpeakerName = m.top.findNode("sbSpeakerName")
+    m.sbSpeechText = m.top.findNode("sbSpeechText")
+    m.sbSceneCounter = m.top.findNode("sbSceneCounter")
+    m.sbSkipHint = m.top.findNode("sbSkipHint")
+    m.sbSceneTimer = m.top.findNode("sbSceneTimer")
+    if m.sbSceneTimer <> invalid then m.sbSceneTimer.observeField("fire", "onSbSceneTimerFired")
 end sub
 
 sub onIntroTimerFired()
@@ -793,6 +813,18 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
         return handleGameKey(key)
     end if
 
+    ' 2.7. Teclas durante o Storyboard / Quadrinhos
+    if m.focusArea = "storyboard"
+        if key = "back"
+            stopStoryboard()
+            return true
+        else if key = "OK" or key = "right"
+            nextStoryboardScene()
+            return true
+        end if
+        return false
+    end if
+
     ' 3. Navegação no Menu Lateral (Sidebar)
     if m.focusArea = "sidebar"
         if key = "up"
@@ -812,6 +844,11 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             if m.selectedMenuIndex = 2
                 m.focusArea = "game"
                 refreshMenuSelectionVisuals()
+                return true
+            end if
+            ' Se for os quadrinhos (índice 3) com OK, inicia direto
+            if m.selectedMenuIndex = 3 and key = "OK"
+                startStoryboard("capitulo_1")
                 return true
             end if
             ' Entra na área de conteúdo padrão
@@ -834,7 +871,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 m.epSubFocus = "card"
                 updateEpisodeDetails()
                 return true
-            else if m.selectedMenuIndex = 3 and m.loreSubFocus <> "tab"
+            else if m.selectedMenuIndex = 4 and m.loreSubFocus <> "tab"
                 m.loreSubFocus = "tab"
                 updateLoreDetails()
                 return true
@@ -926,6 +963,17 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             end if
 
         else if m.selectedMenuIndex = 3
+            ' Tela de Quadrinhos (HQ)
+            if key = "left"
+                m.focusArea = "sidebar"
+                refreshMenuSelectionVisuals()
+                return true
+            else if key = "OK"
+                startStoryboard("capitulo_1")
+                return true
+            end if
+
+        else if m.selectedMenuIndex = 4
             ' Tela de História & Lore
             if m.loreSubFocus = "tab"
                 if key = "right" and m.loreActiveTab = 0
@@ -987,7 +1035,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 end if
             end if
 
-        else if m.selectedMenuIndex = 4
+        else if m.selectedMenuIndex = 5
             ' Tela de Kurions
             if key = "right"
                 if m.focusedKurionIndex < m.kurions.count() - 1
@@ -1006,7 +1054,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 return true
             end if
 
-        else if m.selectedMenuIndex = 5
+        else if m.selectedMenuIndex = 6
             ' Tela de Personagens
             if key = "right"
                 if m.focusedCharIndex < m.characters.count() - 1
@@ -1025,7 +1073,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 return true
             end if
 
-        else if m.selectedMenuIndex = 6
+        else if m.selectedMenuIndex = 7
             ' Configurações
             if key = "left"
                 m.focusArea = "sidebar"
@@ -2743,3 +2791,319 @@ sub triggerGrandVictory()
     m.gameVictoryButtonIndex = 0
     updateGameVictoryButtonFocus()
 end sub
+
+' =======================================================
+' SISTEMA DE HISTÓRIA EM QUADRINHOS (STORYBOARD / HQ)
+' =======================================================
+
+sub startStoryboard(chapterKey as String)
+    storyData = m.dataManager.getStoryData()
+    if storyData = invalid
+        print "[Storyboard] Erro: story_data.json não encontrado ou inválido."
+        return
+    end if
+
+    chapter = invalid
+    if storyData[chapterKey] <> invalid
+        chapter = storyData[chapterKey]
+    else if storyData.capitulo_1 <> invalid
+        chapter = storyData.capitulo_1
+    end if
+
+    if chapter = invalid or chapter.cenas = invalid or chapter.cenas.count() = 0
+        print "[Storyboard] Nenhum capítulo ou cena válido encontrado."
+        return
+    end if
+
+    m.sbScenes = chapter.cenas
+    m.sbCurrentIndex = 0
+    m.focusArea = "storyboard"
+    m.storyboardContainer.visible = true
+
+    renderSbScene(m.sbScenes[m.sbCurrentIndex])
+end sub
+
+sub renderSbScene(cena as Object)
+    if cena = invalid then return
+
+    clearSbLayers()
+
+    totalScenes = m.sbScenes.count()
+    curNum = m.sbCurrentIndex + 1
+    m.sbSceneCounter.text = "Cena " + curNum.toStr() + " de " + totalScenes.toStr()
+
+    ' 1. Renderiza Fundo (gradiente ou cor sólida)
+    if cena.fundo <> invalid
+        fundo = cena.fundo
+        if fundo.tipo = "gradiente" and fundo.cores <> invalid and fundo.cores.count() > 0
+            cores = fundo.cores
+            alturaCada = 720 / cores.count()
+            for i = 0 to cores.count() - 1
+                rect = CreateObject("roSGNode", "Rectangle")
+                rect.width = 1280
+                rect.height = alturaCada
+                rect.color = formatSbColor(cores[i])
+                rect.translation = [0, i * alturaCada]
+                m.sbBackgroundGroup.appendChild(rect)
+            end for
+        else if fundo.tipo = "imagem_referencia"
+            if fundo.cor_base <> invalid
+                rect = CreateObject("roSGNode", "Rectangle")
+                rect.width = 1280
+                rect.height = 720
+                rect.color = formatSbColor(fundo.cor_base)
+                rect.translation = [0, 0]
+                m.sbBackgroundGroup.appendChild(rect)
+            end if
+            if fundo.detalhes = "floresta_sombria"
+                generateSbForestPattern()
+            end if
+        end if
+    end if
+
+    ' 2. Elementos Decorativos / Formas / Textos
+    if cena.elementos <> invalid
+        for each el in cena.elementos
+            if el.tipo = "texto"
+                lbl = CreateObject("roSGNode", "Label")
+                lbl.text = el.conteudo
+                lbl.color = "0xFCD34DFF"
+                lbl.font = "font:HugeBoldSystemFont"
+                lbl.width = 1000
+                if el.posicao <> invalid
+                    lbl.translation = [el.posicao.x, el.posicao.y]
+                else
+                    lbl.translation = [200, 100]
+                end if
+                m.sbSceneElementsLayer.appendChild(lbl)
+            else if el.tipo = "forma"
+                rect = CreateObject("roSGNode", "Rectangle")
+                sz = 120
+                if el.tamanho <> invalid then sz = el.tamanho
+                rect.width = sz
+                rect.height = sz
+                if el.cor <> invalid then rect.color = formatSbColor(el.cor)
+                if el.opacidade <> invalid then rect.opacity = el.opacidade
+                if el.posicao <> invalid then rect.translation = [el.posicao.x, el.posicao.y]
+                m.sbSceneElementsLayer.appendChild(rect)
+            end if
+        end for
+    end if
+
+    ' 3. Personagens e Diálogos
+    hasDialogue = false
+    if cena.personagens <> invalid
+        for each p in cena.personagens
+            grp = CreateObject("roSGNode", "Group")
+            spriteUri = ""
+            if p.sprite <> invalid and p.sprite <> ""
+                spriteUri = "pkg:/images/" + p.sprite
+            end if
+
+            if spriteUri <> ""
+                poster = CreateObject("roSGNode", "Poster")
+                poster.uri = spriteUri
+                poster.width = 180
+                poster.height = 240
+                poster.loadSync = true
+                grp.appendChild(poster)
+            else
+                generateSbSilhouette(grp)
+            end if
+
+            if p.posicao_inicial <> invalid
+                grp.translation = [p.posicao_inicial.x, p.posicao_inicial.y]
+            else if p.posicao <> invalid
+                grp.translation = [p.posicao.x, p.posicao.y]
+            else
+                grp.translation = [300, 360]
+            end if
+
+            m.sbCharacterLayer.appendChild(grp)
+
+            if p.balao_fala <> invalid
+                speaker = "PERSONAGEM"
+                if p.id = "heroi"
+                    speaker = "KOLI"
+                else if p.id = "vilao"
+                    speaker = "DARK TEAM"
+                else if p.id <> invalid
+                    speaker = UCase(p.id)
+                end if
+
+                txt = ""
+                if type(p.balao_fala) = "roString" or type(p.balao_fala) = "String"
+                    txt = p.balao_fala
+                else if type(p.balao_fala) = "roAssociativeArray" and p.balao_fala.texto <> invalid
+                    txt = p.balao_fala.texto
+                end if
+
+                showSbDialogue(speaker, txt)
+                hasDialogue = true
+            end if
+        end for
+    end if
+
+    ' 4. Efeitos e Partículas
+    if cena.efeitos <> invalid
+        for each ef in cena.efeitos
+            if ef.tipo = "particulas"
+                qtd = 24
+                if ef.quantidade <> invalid then qtd = ef.quantidade
+                createSbFireflies(qtd)
+            end if
+        end for
+    end if
+
+    ' 5. Diálogo Narrador se houver
+    if not hasDialogue and cena.balao_fala <> invalid
+        speaker = "NARRADOR"
+        txt = ""
+        if type(cena.balao_fala) = "roString" or type(cena.balao_fala) = "String"
+            txt = cena.balao_fala
+        else if type(cena.balao_fala) = "roAssociativeArray"
+            if cena.balao_fala.origem <> invalid then speaker = UCase(cena.balao_fala.origem)
+            if cena.balao_fala.texto <> invalid then txt = cena.balao_fala.texto
+        end if
+        showSbDialogue(speaker, txt)
+    end if
+
+    ' 6. Inicia o timer da cena
+    dur = 5.0
+    if cena.duracao_segundos <> invalid then dur = cena.duracao_segundos
+    m.sbSceneTimer.duration = dur
+    m.sbSceneTimer.control = "start"
+end sub
+
+sub nextStoryboardScene()
+    if m.sbSceneTimer <> invalid then m.sbSceneTimer.control = "stop"
+    m.sbCurrentIndex = m.sbCurrentIndex + 1
+    if m.sbScenes <> invalid and m.sbCurrentIndex < m.sbScenes.count()
+        renderSbScene(m.sbScenes[m.sbCurrentIndex])
+    else
+        ' Fim do capítulo
+        m.sbDialogueLayer.visible = true
+        m.sbSpeakerName.text = "FIM DO CAPÍTULO 1"
+        m.sbSpeechText.text = "Você concluiu 'O Despertar das Sombras'! Pressione [OK] ou [Voltar] para retornar ao menu."
+        m.sbSceneCounter.text = "Capítulo Concluído ✓"
+    end if
+end sub
+
+sub onSbSceneTimerFired()
+    nextStoryboardScene()
+end sub
+
+sub stopStoryboard()
+    if m.sbSceneTimer <> invalid then m.sbSceneTimer.control = "stop"
+    clearSbLayers()
+    m.storyboardContainer.visible = false
+    m.focusArea = "content"
+    refreshMenuSelectionVisuals()
+end sub
+
+sub clearSbLayers()
+    if m.sbBackgroundGroup <> invalid
+        while m.sbBackgroundGroup.getChildCount() > 0
+            m.sbBackgroundGroup.removeChildIndex(0)
+        end while
+    end if
+    if m.sbEffectsLayer <> invalid
+        while m.sbEffectsLayer.getChildCount() > 0
+            m.sbEffectsLayer.removeChildIndex(0)
+        end while
+    end if
+    if m.sbCharacterLayer <> invalid
+        while m.sbCharacterLayer.getChildCount() > 0
+            m.sbCharacterLayer.removeChildIndex(0)
+        end while
+    end if
+    if m.sbSceneElementsLayer <> invalid
+        while m.sbSceneElementsLayer.getChildCount() > 0
+            m.sbSceneElementsLayer.removeChildIndex(0)
+        end while
+    end if
+    if m.sbDialogueLayer <> invalid then m.sbDialogueLayer.visible = false
+end sub
+
+sub showSbDialogue(speaker as String, text as String)
+    if m.sbDialogueLayer = invalid or text = "" then return
+    m.sbSpeakerName.text = speaker
+    m.sbSpeechText.text = text
+    m.sbDialogueLayer.visible = true
+end sub
+
+sub generateSbForestPattern()
+    if m.sbCharacterLayer = invalid then return
+    for i = 0 to 14
+        x = Rnd(1240)
+        alt = 180 + Rnd(220)
+
+        tronco = CreateObject("roSGNode", "Rectangle")
+        tronco.width = 24
+        tronco.height = alt
+        tronco.color = "0x271B12FF"
+        tronco.translation = [x, 720 - alt]
+        m.sbCharacterLayer.appendChild(tronco)
+
+        copa = CreateObject("roSGNode", "Rectangle")
+        copa.width = 80
+        copa.height = 80
+        copa.color = "0x0E2C19FF"
+        copa.translation = [x - 28, 720 - alt - 40]
+        m.sbCharacterLayer.appendChild(copa)
+    end for
+end sub
+
+sub createSbFireflies(count as Integer)
+    if m.sbEffectsLayer = invalid then return
+    for i = 0 to count - 1
+        vl = CreateObject("roSGNode", "Rectangle")
+        vl.width = 6
+        vl.height = 6
+        vl.color = "0xFDE047FF"
+        vl.opacity = 0.85
+        vl.translation = [Rnd(1240), Rnd(680)]
+        m.sbEffectsLayer.appendChild(vl)
+    end for
+end sub
+
+sub generateSbSilhouette(grp as Object)
+    cabeca = CreateObject("roSGNode", "Rectangle")
+    cabeca.width = 36
+    cabeca.height = 36
+    cabeca.color = "0xE2E8F0FF"
+    cabeca.translation = [32, 10]
+    grp.appendChild(cabeca)
+
+    corpo = CreateObject("roSGNode", "Rectangle")
+    corpo.width = 56
+    corpo.height = 76
+    corpo.color = "0x2563EBFF"
+    corpo.translation = [22, 50]
+    grp.appendChild(corpo)
+
+    pernaEsq = CreateObject("roSGNode", "Rectangle")
+    pernaEsq.width = 20
+    pernaEsq.height = 46
+    pernaEsq.color = "0x0F172AFF"
+    pernaEsq.translation = [24, 130]
+    grp.appendChild(pernaEsq)
+
+    pernaDir = CreateObject("roSGNode", "Rectangle")
+    pernaDir.width = 20
+    pernaDir.height = 46
+    pernaDir.color = "0x0F172AFF"
+    pernaDir.translation = [56, 130]
+    grp.appendChild(pernaDir)
+end sub
+
+function formatSbColor(col as String) as String
+    if col = invalid or col = "" then return "0x000000FF"
+    if Left(col, 1) = "#"
+        hexVal = Mid(col, 2)
+        if Len(hexVal) = 6 then return "0x" + UCase(hexVal) + "FF"
+        if Len(hexVal) = 8 then return "0x" + UCase(hexVal)
+    end if
+    if Left(col, 2) = "0x" or Left(col, 2) = "0X" then return col
+    return col
+end function

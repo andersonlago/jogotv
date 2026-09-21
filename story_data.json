@@ -40,9 +40,9 @@
         "personagens": [
           {
             "id": "heroi",
-            "sprite": "silhueta_heroi.png",
-            "posicao_inicial": {"x": 200, "y": 500},
-            "posicao_final": {"x": 400, "y": 500},
+            "sprite": "characters/koli.png",
+            "posicao_inicial": {"x": 200, "y": 420},
+            "posicao_final": {"x": 400, "y": 420},
             "animacao": "deslizar_suave",
             "balao_fala": "Sinto uma presença antiga aqui."
           }
@@ -62,8 +62,8 @@
         "personagens": [
           {
             "id": "vilao",
-            "sprite": "olhos_sombrios.png",
-            "posicao": {"x": 640, "y": 200},
+            "sprite": "characters/dark_team.png",
+            "posicao": {"x": 580, "y": 180},
             "tamanho": 150,
             "animacao": "tremer_ameaca"
           }

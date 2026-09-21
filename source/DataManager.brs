@@ -36,6 +36,12 @@ function GetDataManager() as Object
                 if ep.id = episodeId then return ep
             end for
             return invalid
+        end function,
+
+        getStoryData: function() as Object
+            data = m.loadJsonFile("pkg:/story_data.json")
+            if data <> invalid and type(data) = "roAssociativeArray" then return data
+            return invalid
         end function
     }
 end function
